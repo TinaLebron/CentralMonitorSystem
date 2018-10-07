@@ -18,7 +18,7 @@ namespace CentralＭonitoringSystem
 {
     public partial class APP : Form
     {
-        
+        //dsf
         //主頁
         HomeUserControl homeUserControl;
         //通訊UI
