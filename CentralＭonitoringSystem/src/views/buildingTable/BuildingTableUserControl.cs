@@ -27,7 +27,54 @@ namespace CentralＭonitoringSystem.src.views
         {
             InitializeComponent();
             SqlConnection(); //建立資料庫本機端
-            
+            gridViewStationCode.CellClick += GridViewStationCode_CellClick;
+            rbActionOpen.CheckedChanged += RbActionOpen_CheckedChanged;
+            rbActionClose.CheckedChanged += RbActionOpen_CheckedChanged;
+        }
+
+        private void RbActionOpen_CheckedChanged(object sender, EventArgs e)
+        {
+            RadioButton rb = (RadioButton)sender;
+            Console.WriteLine("" + rb.Text);
+
+            int row = currentCell.RowIndex;//列
+            int column = currentCell.ColumnIndex;//行
+            DataGridViewRow currentRow = gridViewStationCode.Rows[row];
+            DataGridViewCell currentColumn = currentRow.Cells[column];
+            object cellValue = currentColumn.Value;
+
+            currentColumn.Value = rb.Text;
+
+        }
+        //取得cell值
+        private void SetcellValue(string Value)
+        {
+
+        }
+
+        //用來儲存第幾列第幾行
+        DataGridViewCellEventArgs currentCell;
+        private void GridViewStationCode_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            currentCell = e;
+            int row = currentCell.RowIndex;//列
+            int column = currentCell.ColumnIndex;//行
+
+            DataGridViewRow currentRow = gridViewStationCode.Rows[row];
+            DataGridViewCell currentColumn = currentRow.Cells[column];
+            object cellValue = currentColumn.Value;
+            //Console.WriteLine("cellValue: " + cellValue);
+
+            //改變Radio button
+            if (cellValue.Equals("關閉"))
+            {
+                rbActionClose.Checked = true;
+            }
+            else if (cellValue.Equals("開啟"))
+            {
+                rbActionOpen.Checked = true;
+            }
+
 
         }
         //建立資料庫本機端
@@ -71,7 +118,7 @@ namespace CentralＭonitoringSystem.src.views
             DataTable dt = new DataTable();
             SqlDataAdapter adapt = new SqlDataAdapter("Select StationCode as 站碼,Kind as 種類,Action as 動作 From Sensor ", con);
             adapt.Fill(dt);
-            GridViewStationCode.DataSource = dt;
+            gridViewStationCode.DataSource = dt;
             con.Close();
         }
 

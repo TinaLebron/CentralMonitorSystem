@@ -64,12 +64,6 @@
     <Compile Include="src\views\buildingTable\GroupEditor.Designer.cs">
       <DependentUpon>GroupEditor.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\HistoricalRecord.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="src\HistoricalRecord.Designer.cs">
-      <DependentUpon>HistoricalRecord.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="src\views\buildingTable\BuildingTableUserControl.cs">
@@ -107,9 +101,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="src\views\buildingTable\GroupEditor.resx">
       <DependentUpon>GroupEditor.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\HistoricalRecord.resx">
-      <DependentUpon>HistoricalRecord.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

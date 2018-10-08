@@ -33,10 +33,10 @@
             this.groupBoxTypeSetting = new System.Windows.Forms.GroupBox();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.GridViewStationCode = new System.Windows.Forms.DataGridView();
+            this.gridViewStationCode = new System.Windows.Forms.DataGridView();
             this.groupBoxActionSetting = new System.Windows.Forms.GroupBox();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
+            this.rbActionClose = new System.Windows.Forms.RadioButton();
+            this.rbActionOpen = new System.Windows.Forms.RadioButton();
             this.panelRight = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
@@ -90,7 +90,7 @@
             this.panelOutside.SuspendLayout();
             this.panelLeft.SuspendLayout();
             this.groupBoxTypeSetting.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.GridViewStationCode)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewStationCode)).BeginInit();
             this.groupBoxActionSetting.SuspendLayout();
             this.panelRight.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -114,7 +114,7 @@
             // panelLeft
             // 
             this.panelLeft.Controls.Add(this.groupBoxTypeSetting);
-            this.panelLeft.Controls.Add(this.GridViewStationCode);
+            this.panelLeft.Controls.Add(this.gridViewStationCode);
             this.panelLeft.Controls.Add(this.groupBoxActionSetting);
             this.panelLeft.Font = new System.Drawing.Font("PMingLiU", 16.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.panelLeft.Location = new System.Drawing.Point(7, 0);
@@ -165,21 +165,21 @@
             this.radioButton1.Text = "16DI";
             this.radioButton1.UseVisualStyleBackColor = true;
             // 
-            // GridViewStationCode
+            // gridViewStationCode
             // 
-            this.GridViewStationCode.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.GridViewStationCode.Location = new System.Drawing.Point(61, 16);
-            this.GridViewStationCode.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
-            this.GridViewStationCode.Name = "GridViewStationCode";
-            this.GridViewStationCode.RowTemplate.Height = 24;
-            this.GridViewStationCode.Size = new System.Drawing.Size(781, 984);
-            this.GridViewStationCode.TabIndex = 3;
+            this.gridViewStationCode.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridViewStationCode.Location = new System.Drawing.Point(61, 16);
+            this.gridViewStationCode.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.gridViewStationCode.Name = "gridViewStationCode";
+            this.gridViewStationCode.RowTemplate.Height = 24;
+            this.gridViewStationCode.Size = new System.Drawing.Size(781, 984);
+            this.gridViewStationCode.TabIndex = 3;
             // 
             // groupBoxActionSetting
             // 
             this.groupBoxActionSetting.BackColor = System.Drawing.Color.Gray;
-            this.groupBoxActionSetting.Controls.Add(this.radioButton3);
-            this.groupBoxActionSetting.Controls.Add(this.radioButton4);
+            this.groupBoxActionSetting.Controls.Add(this.rbActionClose);
+            this.groupBoxActionSetting.Controls.Add(this.rbActionOpen);
             this.groupBoxActionSetting.Font = new System.Drawing.Font("PMingLiU", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.groupBoxActionSetting.ForeColor = System.Drawing.Color.White;
             this.groupBoxActionSetting.Location = new System.Drawing.Point(498, 1036);
@@ -191,31 +191,31 @@
             this.groupBoxActionSetting.TabStop = false;
             this.groupBoxActionSetting.Text = "動作設定";
             // 
-            // radioButton3
+            // rbActionClose
             // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Font = new System.Drawing.Font("PMingLiU", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.radioButton3.Location = new System.Drawing.Point(61, 166);
-            this.radioButton3.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(133, 46);
-            this.radioButton3.TabIndex = 1;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "關閉";
-            this.radioButton3.UseVisualStyleBackColor = true;
+            this.rbActionClose.AutoSize = true;
+            this.rbActionClose.Font = new System.Drawing.Font("PMingLiU", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.rbActionClose.Location = new System.Drawing.Point(61, 166);
+            this.rbActionClose.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.rbActionClose.Name = "rbActionClose";
+            this.rbActionClose.Size = new System.Drawing.Size(133, 46);
+            this.rbActionClose.TabIndex = 1;
+            this.rbActionClose.TabStop = true;
+            this.rbActionClose.Text = "關閉";
+            this.rbActionClose.UseVisualStyleBackColor = true;
             // 
-            // radioButton4
+            // rbActionOpen
             // 
-            this.radioButton4.AutoSize = true;
-            this.radioButton4.Font = new System.Drawing.Font("PMingLiU", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.radioButton4.Location = new System.Drawing.Point(61, 76);
-            this.radioButton4.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
-            this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(133, 46);
-            this.radioButton4.TabIndex = 0;
-            this.radioButton4.TabStop = true;
-            this.radioButton4.Text = "開啟";
-            this.radioButton4.UseVisualStyleBackColor = true;
+            this.rbActionOpen.AutoSize = true;
+            this.rbActionOpen.Font = new System.Drawing.Font("PMingLiU", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.rbActionOpen.Location = new System.Drawing.Point(61, 76);
+            this.rbActionOpen.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.rbActionOpen.Name = "rbActionOpen";
+            this.rbActionOpen.Size = new System.Drawing.Size(133, 46);
+            this.rbActionOpen.TabIndex = 0;
+            this.rbActionOpen.TabStop = true;
+            this.rbActionOpen.Text = "開啟";
+            this.rbActionOpen.UseVisualStyleBackColor = true;
             // 
             // panelRight
             // 
@@ -842,7 +842,7 @@
             this.panelLeft.ResumeLayout(false);
             this.groupBoxTypeSetting.ResumeLayout(false);
             this.groupBoxTypeSetting.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.GridViewStationCode)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewStationCode)).EndInit();
             this.groupBoxActionSetting.ResumeLayout(false);
             this.groupBoxActionSetting.PerformLayout();
             this.panelRight.ResumeLayout(false);
@@ -868,10 +868,10 @@
         private System.Windows.Forms.GroupBox groupBoxTypeSetting;
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.DataGridView GridViewStationCode;
+        private System.Windows.Forms.DataGridView gridViewStationCode;
         private System.Windows.Forms.GroupBox groupBoxActionSetting;
-        private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.RadioButton radioButton4;
+        private System.Windows.Forms.RadioButton rbActionClose;
+        private System.Windows.Forms.RadioButton rbActionOpen;
         private System.Windows.Forms.Panel panelRight;
         private System.Windows.Forms.DataGridView dataGridViewSelectInformation;
         private System.Windows.Forms.TextBox tbYCoordinate;
