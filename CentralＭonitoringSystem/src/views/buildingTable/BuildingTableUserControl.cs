@@ -34,23 +34,32 @@ namespace CentralＭonitoringSystem.src.views
 
         private void RbActionOpen_CheckedChanged(object sender, EventArgs e)
         {
+
             RadioButton rb = (RadioButton)sender;
-            Console.WriteLine("" + rb.Text);
+            //Console.WriteLine("" + rb.Text);
 
             int row = currentCell.RowIndex;//列
             int column = currentCell.ColumnIndex;//行
             DataGridViewRow currentRow = gridViewStationCode.Rows[row];
-            DataGridViewCell currentColumn = currentRow.Cells[column];
+            currentColumn = currentRow.Cells[column];
             object cellValue = currentColumn.Value;
 
             currentColumn.Value = rb.Text;
 
         }
+        DataGridViewRow currentRow;
+        DataGridViewCell currentColumn;
         //取得cell值
-        private void SetcellValue(string Value)
+        private object SetcellValue()
         {
-
+            int row = currentCell.RowIndex;//列
+            int column = currentCell.ColumnIndex;//行
+            DataGridViewRow currentRow = gridViewStationCode.Rows[row];
+            DataGridViewCell currentColumn = currentRow.Cells[column];
+            object cellValue = currentColumn.Value;
+            return currentColumn.Value;
         }
+
 
         //用來儲存第幾列第幾行
         DataGridViewCellEventArgs currentCell;

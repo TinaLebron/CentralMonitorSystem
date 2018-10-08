@@ -20,7 +20,7 @@ namespace MenuBar
         public void Input()
         {
             FormMenuBar formMenuBar = new FormMenuBar();
-            formMenuBar
+            
         }
     }
 }
