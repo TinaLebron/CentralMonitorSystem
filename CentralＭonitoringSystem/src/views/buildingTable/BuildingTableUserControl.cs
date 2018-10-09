@@ -36,7 +36,19 @@ namespace CentralＭonitoringSystem.src.views
         
         private void Rb16DI_checkedChanged(object sender, EventArgs e)
         {
-            
+            RadioButton rb = (RadioButton)sender;
+            //Console.WriteLine("" + rb.Text);
+
+            int row = currentCell.RowIndex;//列
+            int column = currentCell.ColumnIndex;//行
+            DataGridViewRow currentRow = gridViewStationCode.Rows[row];
+            DataGridViewCell currentColumn = currentRow.Cells[column];
+            object cellValue = currentColumn.Value;
+
+            if (column == 1)
+            {
+                currentColumn.Value = rb.Text;
+            }
         }
 
         private void RbActionOpen_CheckedChanged(object sender, EventArgs e)
@@ -55,10 +67,7 @@ namespace CentralＭonitoringSystem.src.views
             {
                 currentColumn.Value = rb.Text;
             }
-            else if(column == 1)
-            {
-                currentColumn.Value = rb.Text;
-            }
+            
             
 
         }
@@ -75,7 +84,7 @@ namespace CentralＭonitoringSystem.src.views
             DataGridViewRow currentRow = gridViewStationCode.Rows[row];
             DataGridViewCell currentColumn = currentRow.Cells[column];
             object cellValue = currentColumn.Value;
-            //Console.WriteLine("cellValue: " + cellValue);
+            Console.WriteLine("cellValue: " + cellValue);
 
             //改變Radio button
             if (cellValue.Equals("關閉"))
@@ -86,7 +95,21 @@ namespace CentralＭonitoringSystem.src.views
             {
                 rbActionOpen.Checked = true;
             }
+            else if (cellValue.Equals("16DI"))
+            {
+                rb16DI.Checked = true;
+            }
+            else if (cellValue.Equals("8DO"))
+            {
+                rb8DO.Checked = true;
+            }
+            else 
+            {
+                cellValue = "";
 
+                rbBare.Checked = true;
+            }
+            
 
         }
         //建立資料庫本機端

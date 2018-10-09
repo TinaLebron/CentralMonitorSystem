@@ -87,6 +87,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.tbGroup = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.rbBare = new System.Windows.Forms.RadioButton();
             this.panelOutside.SuspendLayout();
             this.panelLeft.SuspendLayout();
             this.groupBoxTypeSetting.SuspendLayout();
@@ -125,6 +126,7 @@
             // groupBoxTypeSetting
             // 
             this.groupBoxTypeSetting.BackColor = System.Drawing.Color.Gray;
+            this.groupBoxTypeSetting.Controls.Add(this.rbBare);
             this.groupBoxTypeSetting.Controls.Add(this.rb8DO);
             this.groupBoxTypeSetting.Controls.Add(this.rb16DI);
             this.groupBoxTypeSetting.Font = new System.Drawing.Font("新細明體", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
@@ -790,6 +792,17 @@
             this.label1.TabIndex = 8;
             this.label1.Text = "群編號";
             // 
+            // rbBare
+            // 
+            this.rbBare.AutoSize = true;
+            this.rbBare.Font = new System.Drawing.Font("新細明體", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.rbBare.Location = new System.Drawing.Point(28, 103);
+            this.rbBare.Name = "rbBare";
+            this.rbBare.Size = new System.Drawing.Size(14, 13);
+            this.rbBare.TabIndex = 2;
+            this.rbBare.TabStop = true;
+            this.rbBare.UseVisualStyleBackColor = true;
+            // 
             // BuildingTableUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -883,5 +896,6 @@
         private System.Windows.Forms.GroupBox groupBoxAlarmOutput;
         private System.Windows.Forms.RadioButton radioButton5;
         private System.Windows.Forms.RadioButton radioButton6;
+        private System.Windows.Forms.RadioButton rbBare;
     }
 }
