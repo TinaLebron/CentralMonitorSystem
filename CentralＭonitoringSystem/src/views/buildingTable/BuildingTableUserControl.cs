@@ -30,6 +30,13 @@ namespace CentralＭonitoringSystem.src.views
             gridViewStationCode.CellClick += GridViewStationCode_CellClick;
             rbActionOpen.CheckedChanged += RbActionOpen_CheckedChanged;
             rbActionClose.CheckedChanged += RbActionOpen_CheckedChanged;
+            rb16DI.CheckedChanged += Rb16DI_checkedChanged;
+            rb8DO.CheckedChanged += Rb16DI_checkedChanged;
+        }
+        
+        private void Rb16DI_checkedChanged(object sender, EventArgs e)
+        {
+            
         }
 
         private void RbActionOpen_CheckedChanged(object sender, EventArgs e)
@@ -41,26 +48,22 @@ namespace CentralＭonitoringSystem.src.views
             int row = currentCell.RowIndex;//列
             int column = currentCell.ColumnIndex;//行
             DataGridViewRow currentRow = gridViewStationCode.Rows[row];
-            currentColumn = currentRow.Cells[column];
-            object cellValue = currentColumn.Value;
-
-            currentColumn.Value = rb.Text;
-
-        }
-        DataGridViewRow currentRow;
-        DataGridViewCell currentColumn;
-        //取得cell值
-        private object SetcellValue()
-        {
-            int row = currentCell.RowIndex;//列
-            int column = currentCell.ColumnIndex;//行
-            DataGridViewRow currentRow = gridViewStationCode.Rows[row];
             DataGridViewCell currentColumn = currentRow.Cells[column];
             object cellValue = currentColumn.Value;
-            return currentColumn.Value;
+
+            if (column == 2)
+            {
+                currentColumn.Value = rb.Text;
+            }
+            else if(column == 1)
+            {
+                currentColumn.Value = rb.Text;
+            }
+            
+
         }
-
-
+        
+       
         //用來儲存第幾列第幾行
         DataGridViewCellEventArgs currentCell;
         private void GridViewStationCode_CellClick(object sender, DataGridViewCellEventArgs e)
