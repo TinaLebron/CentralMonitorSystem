@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.IO;
+using System.Collections;
 
 namespace CentralＭonitoringSystem.src.views
 {
@@ -32,8 +33,9 @@ namespace CentralＭonitoringSystem.src.views
             rbActionClose.CheckedChanged += RbActionOpen_CheckedChanged;
             rb16DI.CheckedChanged += Rb16DI_checkedChanged;
             rb8DO.CheckedChanged += Rb16DI_checkedChanged;
+            rbBare.CheckedChanged += Rb16DI_checkedChanged;
         }
-        
+        //種類設定事件
         private void Rb16DI_checkedChanged(object sender, EventArgs e)
         {
             RadioButton rb = (RadioButton)sender;
@@ -49,8 +51,9 @@ namespace CentralＭonitoringSystem.src.views
             {
                 currentColumn.Value = rb.Text;
             }
+           
         }
-
+        //動作設定事件
         private void RbActionOpen_CheckedChanged(object sender, EventArgs e)
         {
 
@@ -66,6 +69,7 @@ namespace CentralＭonitoringSystem.src.views
             if (column == 2)
             {
                 currentColumn.Value = rb.Text;
+                
             }
             
             
@@ -77,6 +81,11 @@ namespace CentralＭonitoringSystem.src.views
         DataGridViewCellEventArgs currentCell;
         private void GridViewStationCode_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.RowIndex < 0 || e.ColumnIndex < 0)
+            {
+                return;
+            }
+
             currentCell = e;
             int row = currentCell.RowIndex;//列
             int column = currentCell.ColumnIndex;//行
@@ -84,32 +93,41 @@ namespace CentralＭonitoringSystem.src.views
             DataGridViewRow currentRow = gridViewStationCode.Rows[row];
             DataGridViewCell currentColumn = currentRow.Cells[column];
             object cellValue = currentColumn.Value;
-            Console.WriteLine("cellValue: " + cellValue);
-
+            
             //改變Radio button
             if (cellValue.Equals("關閉"))
             {
                 rbActionClose.Checked = true;
+                rb16DI.Checked = false;
+                rb8DO.Checked = false;
+                rbBare.Checked = false;
             }
             else if (cellValue.Equals("開啟"))
             {
                 rbActionOpen.Checked = true;
+                rb16DI.Checked = false;
+                rb8DO.Checked = false;
+                rbBare.Checked = false;
             }
             else if (cellValue.Equals("16DI"))
             {
                 rb16DI.Checked = true;
+                rbActionClose.Checked = false;
+                rbActionOpen.Checked = false;
             }
             else if (cellValue.Equals("8DO"))
             {
                 rb8DO.Checked = true;
+                rbActionClose.Checked = false;
+                rbActionOpen.Checked = false;
             }
-            else 
+            else
             {
-                cellValue = "";
-
                 rbBare.Checked = true;
+                rbActionClose.Checked = false;
+                rbActionOpen.Checked = false;
             }
-            
+
 
         }
         //建立資料庫本機端
@@ -148,13 +166,25 @@ namespace CentralＭonitoringSystem.src.views
         //讀取資料庫，顯示站碼、種類、動作
         private void BuildingTableUserControl_Load(object sender, EventArgs e)
         {
+            
             SqlConnection con = new SqlConnection(scsb.ToString());
             con.Open();
             DataTable dt = new DataTable();
             SqlDataAdapter adapt = new SqlDataAdapter("Select StationCode as 站碼,Kind as 種類,Action as 動作 From Sensor ", con);
+            //SqlDataAdapter adapt = new SqlDataAdapter("Select StationCode,Kind,Action From Sensor ", con);
             adapt.Fill(dt);
             gridViewStationCode.DataSource = dt;
-            con.Close();
+
+            //foreach (DataRow item in dt.Rows)
+            //{
+            //    int n = gridViewStationCode.Rows.Add();
+                
+            //    gridViewStationCode.Rows[n].Cells[0].Value = item[0].ToString();
+            //    gridViewStationCode.Rows[n].Cells[1].Value = item[1].ToString();
+            //    gridViewStationCode.Rows[n].Cells[2].Value = item[2].ToString();
+            //}
+            
+
         }
 
         private void TBGroup_Click(object sender, EventArgs e)
