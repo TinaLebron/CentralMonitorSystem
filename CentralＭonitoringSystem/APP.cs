@@ -1,4 +1,5 @@
 ﻿using CentralＭonitoringSystem.enums;
+using CentralＭonitoringSystem.src.Database;
 using CentralＭonitoringSystem.src.views;
 using CentralＭonitoringSystem.src.views.communication;
 using CentralＭonitoringSystem.src.views.home;
@@ -16,9 +17,20 @@ using System.Windows.Forms;
 
 namespace CentralＭonitoringSystem
 {
-    public partial class APP : Form
+    public partial class App : Form
     {
-        //dsf
+        private static DBHelper dBHelper;
+        public static DBHelper MyDBHelper
+        {
+            get
+            {
+                if (dBHelper != null)
+                    return dBHelper;
+                else
+                    return null;
+            }
+        }
+
         //主頁
         HomeUserControl homeUserControl;
         //通訊UI
@@ -38,7 +50,7 @@ namespace CentralＭonitoringSystem
         string nodeName = "";
         List<int> nodeNumList = new List<int>();
 
-        public APP()
+        public App()
         {
             InitializeComponent();
             Init();
@@ -98,44 +110,41 @@ namespace CentralＭonitoringSystem
         //建立資料庫本機端
         private void Form1_Load(object sender, EventArgs e)
         {
-            scsb = new SqlConnectionStringBuilder();
-            scsb.DataSource = @".";
-            scsb.InitialCatalog = "CentralＭonitoringSystem";
-            scsb.IntegratedSecurity = true;
+            dBHelper = new DBHelper();
             TreeView();
         }
         //tree view產生
         private void TreeView()
         {
-            SqlConnection con = new SqlConnection(scsb.ToString());
-            con.Open();
-            string strSQL = "select * from Contents where [DirectoryName] NOT Like 'NULL'";
-            SqlCommand cmd = new SqlCommand(strSQL, con);
-            SqlDataReader reader = cmd.ExecuteReader();
-            while (reader.Read() == true)
+            dBHelper.Open();
+
+            SqlDataReader rContents = dBHelper.SelectAllFromContents();
+
+            while (rContents.Read() == true)
             {
-                nodeName = reader["DirectoryName"].ToString(); ;
-                nodeNumList.Add(Convert.ToInt32(reader["ContentsID"]));
+                nodeName = rContents["DirectoryName"].ToString(); ;
+                nodeNumList.Add(Convert.ToInt32(rContents["ContentsID"]));
                 TreeNode GroupEditing = new TreeNode();
                 GroupEditing.Text = nodeName;
                 menuTreeView.Nodes.Add(GroupEditing);
             }
-            reader.Close();
+            rContents.Close();
+
             for (int i = 0; i < nodeNumList.Count; i += 1)
             {
-                strSQL = "select * from GroupＮumber where [ContentsID] = " + "'" + nodeNumList[i] + "'";
-                cmd = new SqlCommand(strSQL, con);
-                reader = cmd.ExecuteReader();
-                while (reader.Read() == true)
+
+                SqlDataReader rGroupNumber = dBHelper.SelectALLFromGroupＮumber(nodeNumList[i]);
+
+                while (rGroupNumber.Read() == true)
                 {
-                    nodeName = reader["GroupExplanation"].ToString();
+                    nodeName = rGroupNumber["GroupExplanation"].ToString();
                     menuTreeView.Nodes[nodeNumList[i]].Nodes.Add(nodeName);
                 }
-                reader.Close();
+                rGroupNumber.Close();
             }
             menuTreeView.ExpandAll();
-            reader.Close();
-            con.Close();
+
+            dBHelper.Close();
         }
 
         //產生日期與時間

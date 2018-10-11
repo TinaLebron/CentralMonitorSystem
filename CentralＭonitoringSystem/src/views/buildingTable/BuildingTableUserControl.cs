@@ -10,13 +10,16 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.IO;
 using System.Collections;
+using CentralＭonitoringSystem.src.Database;
 
 namespace CentralＭonitoringSystem.src.views
 {
     public partial class BuildingTableUserControl : UserControl
     {
-        //連接資料庫
-        SqlConnectionStringBuilder scsb;
+        DBHelper dBHelper;
+
+        //用來儲存第幾列第幾行
+        DataGridViewCellEventArgs currentCell;
 
         //圖片
         string csharppath = System.Windows.Forms.Application.StartupPath;
@@ -27,7 +30,7 @@ namespace CentralＭonitoringSystem.src.views
         public BuildingTableUserControl()
         {
             InitializeComponent();
-            SqlConnection(); //建立資料庫本機端
+            
             gridViewStationCode.CellClick += GridViewStationCode_CellClick;
             rbActionOpen.CheckedChanged += RbActionOpen_CheckedChanged;
             rbActionClose.CheckedChanged += RbActionOpen_CheckedChanged;
@@ -35,6 +38,19 @@ namespace CentralＭonitoringSystem.src.views
             rb8DO.CheckedChanged += Rb16DI_checkedChanged;
             rbBare.CheckedChanged += Rb16DI_checkedChanged;
         }
+
+        //Load ,讀取資料庫，顯示站碼、種類、動作
+        private void BuildingTableUserControl_Load(object sender, EventArgs e)
+        {
+            dBHelper = App.MyDBHelper;
+
+            //打開連線
+            dBHelper.Open();
+            //讀取資料庫，顯示站碼、種類、動作
+            gridViewStationCode.DataSource = dBHelper.SelectDatafromSensor();
+            dBHelper.Close();
+        }
+
         //種類設定事件
         private void Rb16DI_checkedChanged(object sender, EventArgs e)
         {
@@ -69,16 +85,36 @@ namespace CentralＭonitoringSystem.src.views
             if (column == 2)
             {
                 currentColumn.Value = rb.Text;
-                
             }
             
-            
-
         }
-        
-       
-        //用來儲存第幾列第幾行
-        DataGridViewCellEventArgs currentCell;
+
+        private void SelectDatafromSensorAndGroupNumber()
+        {
+            SqlDataReader rSensorAndGroupNumber = dBHelper.SelectDatafromSensorAndGroupNumber();
+
+            if (rSensorAndGroupNumber.Read() == true)
+            {
+                groupBoxPoints.Text = string.Format("{0}", (int)rSensorAndGroupNumber["SensingPointID"]);
+                groupBoxSignalType.Text = string.Format("{0}", (string)rSensorAndGroupNumber["SignalType"]);
+                groupBoxAlarmOutput.Text = string.Format("{0}", (string)rSensorAndGroupNumber["AlarmOutput"]);
+                groupBoxSignalPreset.Text = string.Format("{0}", (string)rSensorAndGroupNumber["SignalPreset"]);
+                tbGroup.Text = string.Format("{0}", (string)rSensorAndGroupNumber["GroupNumber"]);
+                tbSignalDescription.Text = string.Format("{0}", (string)rSensorAndGroupNumber["SignalDisplayTextNormally"]);
+                tbSignalDisplayTextNormally.Text = string.Format("{0}", (string)rSensorAndGroupNumber[""]);
+                tbSignalAnomalyDisplayText.Text = string.Format("{0}", (string)rSensorAndGroupNumber[""]);
+                tbNormalSignalFileName.Text = string.Format("{0}", (string)rSensorAndGroupNumber[""]);
+                tbSignalAnomalyFileName.Text = string.Format("{0}", (string)rSensorAndGroupNumber[""]);
+                tbXCoordinate.Text = string.Format("{0}", (string)rSensorAndGroupNumber["GraphicXCoordinate"]);
+                tbYCoordinate.Text = string.Format("{0}", (string)rSensorAndGroupNumber["GraphicYCoordinate"]);
+                tbTitleContent.Text = string.Format("{0}", (string)rSensorAndGroupNumber["TitleContent"]);
+
+            }
+
+            
+        }
+
+
         private void GridViewStationCode_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0 || e.ColumnIndex < 0)
@@ -89,57 +125,38 @@ namespace CentralＭonitoringSystem.src.views
             currentCell = e;
             int row = currentCell.RowIndex;//列
             int column = currentCell.ColumnIndex;//行
-
-            DataGridViewRow currentRow = gridViewStationCode.Rows[row];
-            DataGridViewCell currentColumn = currentRow.Cells[column];
-            object cellValue = currentColumn.Value;
             
-            //改變Radio button
-            if (cellValue.Equals("關閉"))
-            {
-                rbActionClose.Checked = true;
-                rb16DI.Checked = false;
-                rb8DO.Checked = false;
-                rbBare.Checked = false;
-            }
-            else if (cellValue.Equals("開啟"))
-            {
-                rbActionOpen.Checked = true;
-                rb16DI.Checked = false;
-                rb8DO.Checked = false;
-                rbBare.Checked = false;
-            }
-            else if (cellValue.Equals("16DI"))
+            
+            DataGridViewRow currentRow = gridViewStationCode.Rows[row];
+
+            string sTyple = currentRow.Cells[1].Value.ToString();
+            string sAction = currentRow.Cells[2].Value.ToString();
+            //Console.WriteLine(sTyple + sAction);
+            if (sTyple.Equals("16DI"))
             {
                 rb16DI.Checked = true;
-                rbActionClose.Checked = false;
-                rbActionOpen.Checked = false;
             }
-            else if (cellValue.Equals("8DO"))
+            else if(sTyple.Equals("8DO"))
             {
                 rb8DO.Checked = true;
-                rbActionClose.Checked = false;
-                rbActionOpen.Checked = false;
             }
-            else
+            else 
             {
                 rbBare.Checked = true;
-                rbActionClose.Checked = false;
-                rbActionOpen.Checked = false;
+            }
+
+            if (sAction.Equals("開啟"))
+            {
+                rbActionOpen.Checked = true;
+            }
+            else if (sAction.Equals("關閉"))
+            {
+                rbActionClose.Checked = true;
             }
 
 
         }
-        //建立資料庫本機端
-        private void SqlConnection()
-        {
-            scsb = new SqlConnectionStringBuilder();
-            scsb.DataSource = @".";
-            scsb.InitialCatalog = "CentralＭonitoringSystem";
-            scsb.IntegratedSecurity = true;
-            
-            
-        }
+        
         //圖形檔名點即秀出檔案夾，選擇圖片，資料夾位置在Bin->Debug->pictures
         private void ShowPictureDialog(TextBox textBox)
         {
@@ -163,40 +180,16 @@ namespace CentralＭonitoringSystem.src.views
         {
             ShowPictureDialog(tbSignalAnomalyFileName);
         }
-        //讀取資料庫，顯示站碼、種類、動作
-        private void BuildingTableUserControl_Load(object sender, EventArgs e)
-        {
-            
-            SqlConnection con = new SqlConnection(scsb.ToString());
-            con.Open();
-            DataTable dt = new DataTable();
-            SqlDataAdapter adapt = new SqlDataAdapter("Select StationCode as 站碼,Kind as 種類,Action as 動作 From Sensor ", con);
-            //SqlDataAdapter adapt = new SqlDataAdapter("Select StationCode,Kind,Action From Sensor ", con);
-            adapt.Fill(dt);
-            gridViewStationCode.DataSource = dt;
 
-            //foreach (DataRow item in dt.Rows)
-            //{
-            //    int n = gridViewStationCode.Rows.Add();
-                
-            //    gridViewStationCode.Rows[n].Cells[0].Value = item[0].ToString();
-            //    gridViewStationCode.Rows[n].Cells[1].Value = item[1].ToString();
-            //    gridViewStationCode.Rows[n].Cells[2].Value = item[2].ToString();
-            //}
-            
-
-        }
-
+        //TextBox群編號點擊event
         private void TBGroup_Click(object sender, EventArgs e)
         {
-            SqlConnection con = new SqlConnection(scsb.ToString());
-            con.Open();
-            DataTable dt = new DataTable();
-            SqlDataAdapter adapt = new SqlDataAdapter("Select Number as 編號,GroupExplanation as 群號說明,GraphicsFileName as 圖形檔名 From GroupＮumber", con);
-            adapt.Fill(dt);
-            dataGridViewSelectInformation.DataSource = dt;
+
+            dBHelper.Open();
+            //讀取GroupNumber表, 顯示標號、群號說明、圖形檔名
+            dataGridViewSelectInformation.DataSource = dBHelper.SelectDatafromGroupNumber();
             dataGridViewSelectInformation.Visible = true;
-            con.Close();
+            dBHelper.Close();
         }
 
         private void TBSignalDescription_Click(object sender, EventArgs e)

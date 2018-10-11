@@ -1,6 +1,6 @@
 ﻿namespace CentralＭonitoringSystem
 {
-    partial class APP
+    partial class App
     {
         /// <summary>
         /// Required designer variable.
