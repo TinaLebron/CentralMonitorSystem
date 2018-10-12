@@ -44,8 +44,8 @@ namespace CentralＭonitoringSystem.src.Database
             SqlConnection con = new SqlConnection(scsb.ToString());
             con.Open();
             DataTable dt = new DataTable();
-            SqlDataAdapter adapt = new SqlDataAdapter("Select StationCode as 站碼,Kind as 種類,Action as 動作 From Sensor ", con);
-
+            SqlDataAdapter adapt = new SqlDataAdapter("Select StationCode as 站碼,Type as 種類,Action as 動作 From Sensor ", con);
+            
             adapt.Fill(dt);
             return dt;
         }
@@ -69,13 +69,14 @@ namespace CentralＭonitoringSystem.src.Database
         }
 
         //讀取sensor與GroupNumber表,顯示建表所有表格
-        public SqlDataReader SelectDatafromSensorAndGroupNumber()
+        public SqlDataReader SelectDatafromSensorAndGroupNumber(int rowIndex,string SensorsNum)
         {
-            string strSQL = "select * from SensingPoint where SensingPointID=1 and SensorID=1";
+            
+            string strSQL = "select * from SensingPoint where Points=@SensingNum and SensorID=@SensorsNum";
             SqlCommand cmd = new SqlCommand(strSQL, con);
-
+            cmd.Parameters.AddWithValue("@SensingNum", rowIndex);
+            cmd.Parameters.AddWithValue("@SensorsNum", SensorsNum);
             SqlDataReader reader = cmd.ExecuteReader();
-
             
             return reader;
         }
