@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="src\Database\DBHelper.cs" />
     <Compile Include="src\enums\Page.cs" />
     <Compile Include="APP.cs">
       <SubType>Form</SubType>

@@ -58,6 +58,39 @@ namespace CentralＭonitoringSystem.src.views
             //讀取資料庫，顯示站碼、種類、動作
             gridViewStationCode.DataSource = dBHelper.SelectDatafromSensor();
             dBHelper.Close();
+
+            //一開始進入畫面,種類設定,動作設定 UI要出現值
+            SetSensorUI(0);
+        }
+
+        //設定Sensor UI
+        private void SetSensorUI(int index)
+        {
+            DataGridViewRow currentRow = gridViewStationCode.Rows[index];
+
+            string sTyple = currentRow.Cells[1].Value.ToString();
+            string sAction = currentRow.Cells[2].Value.ToString();
+            if (sTyple.Equals("16DI"))
+            {
+                rb16DI.Checked = true;
+            }
+            else if (sTyple.Equals("8DO"))
+            {
+                rb8DO.Checked = true;
+            }
+            else
+            {
+                rbBare.Checked = true;
+            }
+
+            if (sAction.Equals("開啟"))
+            {
+                rbActionOpen.Checked = true;
+            }
+            else if (sAction.Equals("關閉"))
+            {
+                rbActionClose.Checked = true;
+            }
         }
 
         //種類設定事件
@@ -97,7 +130,7 @@ namespace CentralＭonitoringSystem.src.views
             }
             
         }
-
+        
         private void SelectDatafromSensorAndGroupNumber()
         {
             dBHelper.Open();
@@ -135,38 +168,12 @@ namespace CentralＭonitoringSystem.src.views
             currentCell = e;
             int row = currentCell.RowIndex;//列
             int column = currentCell.ColumnIndex;//行
-            
-            
-            DataGridViewRow currentRow = gridViewStationCode.Rows[row];
 
-            string sTyple = currentRow.Cells[1].Value.ToString();
-            string sAction = currentRow.Cells[2].Value.ToString();
-            //Console.WriteLine(sTyple + sAction);
-            if (sTyple.Equals("16DI"))
-            {
-                rb16DI.Checked = true;
-            }
-            else if(sTyple.Equals("8DO"))
-            {
-                rb8DO.Checked = true;
-            }
-            else 
-            {
-                rbBare.Checked = true;
-            }
-
-            if (sAction.Equals("開啟"))
-            {
-                rbActionOpen.Checked = true;
-            }
-            else if (sAction.Equals("關閉"))
-            {
-                rbActionClose.Checked = true;
-            }
+            SetSensorUI(row);
 
 
         }
-        
+
         //圖形檔名點即秀出檔案夾，選擇圖片，資料夾位置在Bin->Debug->pictures
         private void ShowPictureDialog(TextBox textBox)
         {
