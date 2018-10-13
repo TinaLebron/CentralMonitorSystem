@@ -16,6 +16,7 @@ namespace CentralＭonitoringSystem.src.views
 {
     public partial class BuildingTableUserControl : UserControl
     {
+        
         DBHelper dBHelper;
 
         //用來儲存第幾列第幾行
@@ -43,9 +44,15 @@ namespace CentralＭonitoringSystem.src.views
             gridViewStationCode.CellClick += GridViewStationCode_CellClick;
             rbActionOpen.CheckedChanged += RbActionOpen_CheckedChanged;
             rbActionClose.CheckedChanged += RbActionOpen_CheckedChanged;
-            rb16DI.CheckedChanged += Rb16DI_checkedChanged;
-            rb8DO.CheckedChanged += Rb16DI_checkedChanged;
-            rbBare.CheckedChanged += Rb16DI_checkedChanged;
+            rb16DI.CheckedChanged += RbSensor_checkedChanged;
+            rb8DO.CheckedChanged += RbSensor_checkedChanged;
+            rbBare.CheckedChanged += RbSensor_checkedChanged;
+            this.BindingContextChanged += BuildingTableUserControl_BindingContextChanged;
+        }
+
+        private void BuildingTableUserControl_BindingContextChanged(object sender, EventArgs e)
+        {
+            Console.WriteLine("BuildingTableUserControl_BindingContextChanged");
         }
 
         //Load ,讀取資料庫，顯示站碼、種類、動作
@@ -94,11 +101,12 @@ namespace CentralＭonitoringSystem.src.views
         }
 
         //種類設定事件
-        private void Rb16DI_checkedChanged(object sender, EventArgs e)
+        //當radioButton屬性checked值被給變,此函式會被觸發
+        private void RbSensor_checkedChanged(object sender, EventArgs e)
         {
             RadioButton rb = (RadioButton)sender;
             //Console.WriteLine("" + rb.Text);
-
+            if (currentCell == null) return; 
             int row = currentCell.RowIndex;//列
             int column = currentCell.ColumnIndex;//行
             DataGridViewRow currentRow = gridViewStationCode.Rows[row];
@@ -117,7 +125,7 @@ namespace CentralＭonitoringSystem.src.views
 
             RadioButton rb = (RadioButton)sender;
             //Console.WriteLine("" + rb.Text);
-
+            if (currentCell == null) return;
             int row = currentCell.RowIndex;//列
             int column = currentCell.ColumnIndex;//行
             DataGridViewRow currentRow = gridViewStationCode.Rows[row];
@@ -157,7 +165,7 @@ namespace CentralＭonitoringSystem.src.views
 
         }
 
-
+        //Cell click點擊事件
         private void GridViewStationCode_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0 || e.ColumnIndex < 0)
