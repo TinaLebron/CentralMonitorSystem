@@ -69,7 +69,7 @@ namespace CentralＭonitoringSystem.src.Database
         }
 
         //讀取sensor與GroupNumber表,顯示建表所有表格
-        public SqlDataReader SelectDatafromSensorAndGroupNumber(int rowIndex,string SensorsNum)
+        public SqlDataReader SelectDatafromSensingPoint(int rowIndex,string SensorsNum)
         {
             
             string strSQL = "select * from SensingPoint where Points=@SensingNum and SensorID=@SensorsNum";

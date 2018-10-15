@@ -45,7 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="src\Database\DBHelper.cs" />
+    <Compile Include="src\database\DBHelper.cs" />
     <Compile Include="src\enums\Page.cs" />
     <Compile Include="APP.cs">
       <SubType>Form</SubType>
@@ -53,6 +53,7 @@
     <Compile Include="APP.Designer.cs">
       <DependentUpon>APP.cs</DependentUpon>
     </Compile>
+    <Compile Include="src\model\Signal.cs" />
     <Compile Include="src\views\buildingTable\DirectoryEditing.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -48,6 +48,16 @@ namespace CentralＭonitoringSystem.src.views
             rb8DO.CheckedChanged += RbSensor_checkedChanged;
             rbBare.CheckedChanged += RbSensor_checkedChanged;
             this.BindingContextChanged += BuildingTableUserControl_BindingContextChanged;
+
+            this.rbPoints1.CheckedChanged += RbPoints_CanFocus;
+            this.rbPoints2.CheckedChanged += RbPoints_CanFocus;
+            this.rbPoints3.CheckedChanged += RbPoints_CanFocus;
+        }
+
+        private void RbPoints_CanFocus(object sender, EventArgs e)
+        {
+            RadioButton rb = (RadioButton)sender;
+            Console.WriteLine("RadioButton : " + rb.Text);
         }
 
         private void BuildingTableUserControl_BindingContextChanged(object sender, EventArgs e)
@@ -68,6 +78,16 @@ namespace CentralＭonitoringSystem.src.views
 
             //一開始進入畫面,種類設定,動作設定 UI要出現值
             SetSensorUI(0);
+            //從sensingPoint table select資料，然後秀出在信號UI上
+        
+
+            SetSignalUI();
+        }
+
+        //從sensingPoint table select資料，然後秀出在信號UI上
+        private void SetSignalUI()
+        {
+           
         }
 
         //設定Sensor UI
@@ -138,27 +158,55 @@ namespace CentralＭonitoringSystem.src.views
             }
             
         }
-        
+
+        //判別
+
+        //讀取sensor與GroupNumber表,顯示建表所有表格
         private void SelectDatafromSensorAndGroupNumber()
         {
             dBHelper.Open();
 
-            SqlDataReader rSensorAndGroupNumber = dBHelper.SelectDatafromSensorAndGroupNumber(gridViewStationCode.CurrentRow.Index,strPoint);
+            SqlDataReader rSensorAndGroupNumber = dBHelper.SelectDatafromSensingPoint((gridViewStationCode.CurrentRow.Index) + 1,strPoint);
 
-            while (rSensorAndGroupNumber.Read() == true)
+           if(rSensorAndGroupNumber.Read() == true)
             {
-                groupBoxSignalType.Text = string.Format("{0}", (int)rSensorAndGroupNumber["SignalType"]);
-                groupBoxAlarmOutput.Text = string.Format("{0}", (int)rSensorAndGroupNumber["AlarmOutput"]);
-                groupBoxSignalPreset.Text = string.Format("{0}", (int)rSensorAndGroupNumber["SignalPreset"]);
+                if ((bool)rSensorAndGroupNumber["SignalType"] == true)
+                {
+                    radioButton8.Checked = true;
+                }
+                else
+                {
+                    radioButton7.Checked = true;
+                }
+                if((bool)rSensorAndGroupNumber["AlarmOutput"] == true)
+                {
+                    
+                    radioButton6.Checked = true;
+                }
+                else
+                {
+                    radioButton5.Checked = true;
+                }
+                if ((bool)rSensorAndGroupNumber["SignalPreset"] == true)
+                {
+                    
+                    radioButton10.Checked = true;
+                }
+                else 
+                {
+                    radioButton9.Checked = true;
+                }
+
+
                 tbGroup.Text = string.Format("{0}", (int)rSensorAndGroupNumber["GroupNumber"]);
-                tbSignalDescription.Text = string.Format("{0}", (int)rSensorAndGroupNumber["SignalDescription"]);
-                tbSignalDisplayTextNormally.Text = string.Format("{0}", (int)rSensorAndGroupNumber["SignalDisplayTextNormally"]);
-                tbSignalAnomalyDisplayText.Text = string.Format("{0}", (int)rSensorAndGroupNumber["SignalAnomalyDisplayText"]);
-                tbNormalSignalFileName.Text = string.Format("{0}", (int)rSensorAndGroupNumber["NormalSignalFileName"]);
-                tbSignalAnomalyFileName.Text = string.Format("{0}", (int)rSensorAndGroupNumber["SignalAnomalyFileName"]);
-                tbXCoordinate.Text = string.Format("{0}", (int)rSensorAndGroupNumber["GraphicXCoordinate"]);
-                tbYCoordinate.Text = string.Format("{0}", (int)rSensorAndGroupNumber["GraphicYCoordinate"]);
-                tbTitleContent.Text = string.Format("{0}", (int)rSensorAndGroupNumber["TitleContent"]);
+                tbSignalDescription.Text = string.Format("{0}", (string)rSensorAndGroupNumber["SignalDescription"]);
+                tbSignalDisplayTextNormally.Text = string.Format("{0}", (string)rSensorAndGroupNumber["SignalDisplayTextNormally"]);
+                tbSignalAnomalyDisplayText.Text = string.Format("{0}", (string)rSensorAndGroupNumber["SignalAnomalyDisplayText"]);
+                tbNormalSignalFileName.Text = string.Format("{0}", (string)rSensorAndGroupNumber["NormalSignalFileName"]);
+                tbSignalAnomalyFileName.Text = string.Format("{0}", (string)rSensorAndGroupNumber["SignalAnomalyFileName"]);
+                tbXCoordinate.Text = string.Format("{0}", (string)rSensorAndGroupNumber["GraphicXCoordinate"]);
+                tbYCoordinate.Text = string.Format("{0}", (string)rSensorAndGroupNumber["GraphicYCoordinate"]);
+                tbTitleContent.Text = string.Format("{0}", (string)rSensorAndGroupNumber["TitleContent"]);
             }
             rSensorAndGroupNumber.Close();
             dBHelper.Close();
@@ -231,136 +279,11 @@ namespace CentralＭonitoringSystem.src.views
         {
 
         }
+
         //點數1的事件
         private void RbPoints1_CheckedChanged(object sender, EventArgs e)
         {
             strPoint = "1";
-            SelectDatafromSensorAndGroupNumber();
-        }
-        //點數2的事件
-        private void RbPoints2_CheckedChanged(object sender, EventArgs e)
-        {
-            strPoint = "2";
-            SelectDatafromSensorAndGroupNumber();
-        }
-        //點數3的事件
-        private void RbPoints3_CheckedChanged(object sender, EventArgs e)
-        {
-            strPoint = "3";
-            SelectDatafromSensorAndGroupNumber();
-        }
-        //點數4的事件
-        private void RbPoints4_CheckedChanged(object sender, EventArgs e)
-        {
-            strPoint = "4";
-            SelectDatafromSensorAndGroupNumber();
-        }
-        //點數5的事件
-        private void RbPoints5_CheckedChanged(object sender, EventArgs e)
-        {
-            strPoint = "5";
-            SelectDatafromSensorAndGroupNumber();
-        }
-        //點數6的事件
-        private void RbPoints6_CheckedChanged(object sender, EventArgs e)
-        {
-            strPoint = "6";
-            SelectDatafromSensorAndGroupNumber();
-        }
-        //點數7的事件
-        private void RbPoints7_CheckedChanged(object sender, EventArgs e)
-        {
-            strPoint = "7";
-            SelectDatafromSensorAndGroupNumber();
-        }
-        //點數8的事件
-        private void RbPoints8_CheckedChanged(object sender, EventArgs e)
-        {
-            strPoint = "8";
-            SelectDatafromSensorAndGroupNumber();
-        }
-        //點數9的事件
-        private void RbPoints9_CheckedChanged(object sender, EventArgs e)
-        {
-            strPoint = "9";
-            SelectDatafromSensorAndGroupNumber();
-        }
-        //點數10的事件
-        private void RbPoints10_CheckedChanged(object sender, EventArgs e)
-        {
-            strPoint = "10";
-            SelectDatafromSensorAndGroupNumber();
-        }
-        //點數11的事件
-        private void RbPoints11_CheckedChanged(object sender, EventArgs e)
-        {
-            strPoint = "11";
-            SelectDatafromSensorAndGroupNumber();
-        }
-        //點數12的事件
-        private void RbPoints12_CheckedChanged(object sender, EventArgs e)
-        {
-            strPoint = "12";
-            SelectDatafromSensorAndGroupNumber();
-        }
-        //點數13的事件
-        private void RbPoints13_CheckedChanged(object sender, EventArgs e)
-        {
-            strPoint = "13";
-            SelectDatafromSensorAndGroupNumber();
-        }
-        //點數14的事件
-        private void RbPoints14_CheckedChanged(object sender, EventArgs e)
-        {
-            strPoint = "14";
-            SelectDatafromSensorAndGroupNumber();
-        }
-        //點數15的事件
-        private void RbPoints15_CheckedChanged(object sender, EventArgs e)
-        {
-            strPoint = "15";
-            SelectDatafromSensorAndGroupNumber();
-        }
-        //點數16的事件
-        private void RbPoints16_CheckedChanged(object sender, EventArgs e)
-        {
-            strPoint = "16";
-            SelectDatafromSensorAndGroupNumber();
-        }
-        //信號型式常開的事件
-        private void radioButton8_CheckedChanged(object sender, EventArgs e)
-        {
-            strType = "常開";
-            SelectDatafromSensorAndGroupNumber();
-        }
-        //信號型式常閉的事件
-        private void radioButton7_CheckedChanged(object sender, EventArgs e)
-        {
-            strType = "常閉";
-            SelectDatafromSensorAndGroupNumber();
-        }
-        //
-        private void radioButton6_CheckedChanged(object sender, EventArgs e)
-        {
-            strType = "開啟";
-            SelectDatafromSensorAndGroupNumber();
-        }
-
-        private void radioButton5_CheckedChanged(object sender, EventArgs e)
-        {
-            strType = "關閉";
-            SelectDatafromSensorAndGroupNumber();
-        }
-
-        private void radioButton10_CheckedChanged(object sender, EventArgs e)
-        {
-            strType = "常開";
-            SelectDatafromSensorAndGroupNumber();
-        }
-
-        private void radioButton9_CheckedChanged(object sender, EventArgs e)
-        {
-            strType = "常閉";
             SelectDatafromSensorAndGroupNumber();
         }
     }
