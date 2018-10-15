@@ -1,13 +1,13 @@
-﻿namespace CentralＭonitoringSystem.src.views
+﻿namespace CentralＭonitoringSystem
 {
     partial class GroupEditor
     {
-        /// <summary> 
+        /// <summary>
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary> 
+        /// <summary>
         /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
@@ -20,10 +20,10 @@
             base.Dispose(disposing);
         }
 
-        #region Component Designer generated code
+        #region Windows Form Designer generated code
 
-        /// <summary> 
-        /// Required method for Designer support - do not modify 
+        /// <summary>
+        /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
@@ -44,11 +44,11 @@
             this.panelOutside.BackColor = System.Drawing.Color.White;
             this.panelOutside.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelOutside.Controls.Add(this.dataGridView2);
-            this.panelOutside.Location = new System.Drawing.Point(2, 11);
-            this.panelOutside.Margin = new System.Windows.Forms.Padding(2);
+            this.panelOutside.Location = new System.Drawing.Point(10, 10);
+            this.panelOutside.Margin = new System.Windows.Forms.Padding(1);
             this.panelOutside.Name = "panelOutside";
-            this.panelOutside.Size = new System.Drawing.Size(2320, 1411);
-            this.panelOutside.TabIndex = 6;
+            this.panelOutside.Size = new System.Drawing.Size(1072, 711);
+            this.panelOutside.TabIndex = 5;
             // 
             // dataGridView2
             // 
@@ -57,11 +57,10 @@
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn3});
-            this.dataGridView2.Location = new System.Drawing.Point(150, 38);
-            this.dataGridView2.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.dataGridView2.Location = new System.Drawing.Point(69, 19);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowTemplate.Height = 24;
-            this.dataGridView2.Size = new System.Drawing.Size(1586, 1168);
+            this.dataGridView2.Size = new System.Drawing.Size(732, 584);
             this.dataGridView2.TabIndex = 5;
             // 
             // dataGridViewTextBoxColumn1
@@ -81,11 +80,13 @@
             // 
             // GroupEditor
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 24F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(1558, 861);
             this.Controls.Add(this.panelOutside);
+            this.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
             this.Name = "GroupEditor";
-            this.Size = new System.Drawing.Size(2878, 1349);
+            this.Text = "GroupEditor";
             this.panelOutside.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);

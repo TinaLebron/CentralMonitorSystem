@@ -80,6 +80,17 @@ namespace CentralＭonitoringSystem.src.Database
             
             return reader;
         }
+        //讀取sensor表,顯示建表所有表格
+        public SqlDataReader SelectFromSensingPointWithSensorID(int sensorID)
+        {
+
+            string strSQL = "select * from SensingPoint where SensorID=@sensorID";
+            SqlCommand cmd = new SqlCommand(strSQL, con);
+            cmd.Parameters.AddWithValue("@sensorID", sensorID);
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            return reader;
+        }
 
         //回傳treeview的目錄
         public SqlDataReader SelectAllFromContents()

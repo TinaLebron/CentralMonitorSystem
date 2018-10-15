@@ -58,18 +58,10 @@ namespace CentralＭonitoringSystem.src.views
             this.rbPoints1.CheckedChanged += RbPoints_CanFocus;
             this.rbPoints2.CheckedChanged += RbPoints_CanFocus;
             this.rbPoints3.CheckedChanged += RbPoints_CanFocus;
+            
         }
 
-        private void RbPoints_CanFocus(object sender, EventArgs e)
-        {
-            RadioButton rb = (RadioButton)sender;
-            Console.WriteLine("RadioButton : " + rb.Text);
-        }
-
-        private void BuildingTableUserControl_BindingContextChanged(object sender, EventArgs e)
-        {
-            Console.WriteLine("BuildingTableUserControl_BindingContextChanged");
-        }
+       
 
         //Load ,讀取資料庫，顯示站碼、種類、動作
         private void BuildingTableUserControl_Load(object sender, EventArgs e)
@@ -87,7 +79,95 @@ namespace CentralＭonitoringSystem.src.views
             //從sensingPoint table select資料，然後秀出在信號UI上
         
 
-            SetSignalUI();
+           // SetSignalUI();
+
+            //new 6個model,因為站碼1只有6個點數有值
+            //for (int i = 0; i < 6; i++)
+            //{
+            //    signals.Add(new Signal());
+            //}
+            
+            dBHelper.Open();
+            SqlDataReader reader = dBHelper.SelectFromSensingPointWithSensorID(1);
+            if (reader.HasRows)
+            {
+                Console.WriteLine("有資料");
+                while (reader.Read())
+                {
+                    
+                    int point = (int)reader["Points"];
+                    bool signalType = (bool)reader["SignalType"];
+                    bool alarmOutput = (bool)reader["AlarmOutput"];
+                    bool singalPreset = (bool)reader["SignalPreset"];
+                    string groupNumber = string.Format("{0}", (int)reader["GroupNumber"]);
+                    string signalDescription = string.Format("{0}", (string)reader["SignalDescription"]);
+                    string signalDisplayTextNormally = string.Format("{0}", (string)reader["SignalDisplayTextNormally"]);
+                    string signalAnomalyDisplayText = string.Format("{0}", (string)reader["SignalAnomalyDisplayText"]);
+                    string normalSignalFileName = string.Format("{0}", (string)reader["NormalSignalFileName"]);
+                    string signalAnomalyFileName = string.Format("{0}", (string)reader["SignalAnomalyFileName"]);
+                    string graphicXCoordinate = string.Format("{0}", (string)reader["GraphicXCoordinate"]);
+                    string graphicYCoordinate = string.Format("{0}", (string)reader["GraphicYCoordinate"]);
+                    string titleContent = string.Format("{0}", (string)reader["TitleContent"]);
+
+
+                    //Console.WriteLine("點數: " + point + "\n" +
+                    //                  "信號型式: " + ((signalType == true) ? "常開" : "常閉") + "\n" + 
+                    //                  "警報輸出: " + ((alarmOutput == true) ? "開啟" : "關閉") + "\n" +
+                    //                  "信號預設: " + ((singalPreset == true) ? "常開" : "常閉") + "\n" +
+                    //                  "群編號: " + groupNumber + "\n" +
+                    //                  "信號說明: " + signalDescription + "\n" +
+                    //                  "信號正常顯示文字: " + signalDisplayTextNormally + "\n" +
+                    //                  "信號異常顯示文字: " + signalAnomalyDisplayText + "\n" +
+                    //                  "信號正常對應圖形檔名: " + normalSignalFileName + "\n" +
+                    //                  "信號異常對應圖形檔名: " + signalAnomalyFileName + "\n" +
+                    //                  "圖形X座標: " + graphicXCoordinate + "\n" +
+                    //                  "圖形Y座標: " + graphicYCoordinate + "\n" +
+                    //                  "標題內容: " + titleContent + "\n" );
+                    // Console.WriteLine("信號型式: " + ((signalType == true) ? "常開" : "常閉"));
+                    Console.WriteLine("--------------------------------------");
+                    //將資料set進model
+                    signals.Add(new Signal(point, 
+                        signalType, 
+                        alarmOutput, 
+                        singalPreset, 
+                        groupNumber, 
+                        signalDescription, 
+                        signalDisplayTextNormally, 
+                        signalAnomalyDisplayText, 
+                        normalSignalFileName, 
+                        signalAnomalyFileName, 
+                        graphicXCoordinate, 
+                        graphicYCoordinate, 
+                        titleContent));
+                    
+                }
+            }
+            else
+            {
+                Console.WriteLine("SensingPoint table裡面沒有任何資料");
+            }
+            reader.Close();
+            dBHelper.Close();
+            
+            Console.WriteLine("印出站點1信號table所有資料");
+
+            foreach (Signal signal in signals)
+            {
+                Console.WriteLine("點數: {0}\t信號型式: {1}\t警報輸出: {2}\t信號預設: {3}\t群編號: {4}\t 信號說明:{5}\t信號正常顯示文字 :{6}\t信號異常顯示文字 :{7}\t信號正常對應圖形檔名: {8}\t信號正常對應圖形檔名: {9}\t圖形X座標: {10}\t圖形Y座標: {11}\t標題內容: {12}",
+                    signal.Point,
+                    signal.SignalType,
+                    signal.AlarmOutput,
+                    signal.SignalPreset,
+                    signal.GroupNumber,
+                    signal.SignalDescription,
+                    signal.SignalDisplayTextNormally,
+                    signal.SignalAnomalyDisplayText,
+                    signal.NormalSignalFileName,
+                    signal.SignalAnomalyFileName,
+                    signal.GraphicXCoordinate,
+                    signal.GraphicYCoordinate,
+                    signal.TitleContent);
+            }
         }
 
         //從sensingPoint table select資料，然後秀出在信號UI上
@@ -95,7 +175,17 @@ namespace CentralＭonitoringSystem.src.views
         {
            
         }
-
+        //測試
+        private void RbPoints_CanFocus(object sender, EventArgs e)
+        {
+            RadioButton rb = (RadioButton)sender;
+            Console.WriteLine("RadioButton : " + rb.Text);
+        }
+        //測試
+        private void BuildingTableUserControl_BindingContextChanged(object sender, EventArgs e)
+        {
+            Console.WriteLine("BuildingTableUserControl_BindingContextChanged");
+        }
         //設定Sensor UI
         private void SetSensorUI(int index)
         {

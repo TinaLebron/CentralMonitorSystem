@@ -8,10 +8,10 @@ namespace CentralＭonitoringSystem.src.model
 {
     class Signal
     {
-        int points;
-        int signalType;
-        int alarmOutput;
-        int signalPreset;
+        int point;
+        bool signalType;
+        bool alarmOutput;
+        bool signalPreset;
         string groupNumber;
         string signalDescription;
         string signalDisplayTextNormally;
@@ -23,19 +23,35 @@ namespace CentralＭonitoringSystem.src.model
         string titleContent;
 
         public Signal() { }
+        public Signal(int point,bool signalType, bool alarmOutput, bool signalPreset, string groupNumber, string signalDescription, string signalDisplayTextNormally, string signalAnomalyDisplayText, string normalSignalFileName, string signalAnomalyFileName, string graphicXCoordinate, string graphicYCoordinate, string titleContent)
+        {
+            this.point = point;
+            this.signalType = signalType;
+            this.alarmOutput = alarmOutput;
+            this.signalPreset = signalPreset;
+            this.groupNumber = groupNumber;
+            this.signalDescription = signalDescription;
+            this.signalDisplayTextNormally = signalDisplayTextNormally;
+            this.signalAnomalyDisplayText = signalAnomalyDisplayText;
+            this.normalSignalFileName = normalSignalFileName;
+            this.signalAnomalyFileName = signalAnomalyFileName;
+            this.graphicXCoordinate = graphicXCoordinate;
+            this.graphicYCoordinate = graphicYCoordinate;
+            this.titleContent = titleContent;
+        }
 
-        public int Points
+        public int Point
         {
             get
             {
-                return points;
+                return point;
             }
             set
             {
-                points = value;
+                point = value;
             }
         }
-        public int SignalType
+        public bool SignalType
         {
             get
             {
@@ -46,7 +62,7 @@ namespace CentralＭonitoringSystem.src.model
                 signalType = value;
             }
         }
-        public int AlarmOutput
+        public bool AlarmOutput
         {
             get
             {
@@ -57,7 +73,7 @@ namespace CentralＭonitoringSystem.src.model
                 alarmOutput = value;
             }
         }
-        public int SignalPreset
+        public bool SignalPreset
         {
             get
             {
