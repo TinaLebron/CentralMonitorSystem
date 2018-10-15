@@ -11,12 +11,18 @@ using System.Data.SqlClient;
 using System.IO;
 using System.Collections;
 using CentralＭonitoringSystem.src.Database;
+using CentralＭonitoringSystem.src.model;
 
 namespace CentralＭonitoringSystem.src.views
 {
     public partial class BuildingTableUserControl : UserControl
     {
-        
+
+        //存資料庫的SensingPoint
+        List<Signal> signals = new List<Signal>();
+
+
+        //所有資料庫相關資料
         DBHelper dBHelper;
 
         //用來儲存第幾列第幾行
