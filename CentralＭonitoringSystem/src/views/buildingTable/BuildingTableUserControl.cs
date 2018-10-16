@@ -58,11 +58,35 @@ namespace CentralＭonitoringSystem.src.views
             //this.rbPoints1.CheckedChanged += RbPoints_CanFocus;
             //this.rbPoints2.CheckedChanged += RbPoints_CanFocus;
             //this.rbPoints3.CheckedChanged += RbPoints_CanFocus;
-            
+
+            //點數的radio button 點擊的事件
+            this.rbPoints1.CheckedChanged += RbPoints_checkedChanged;
+            this.rbPoints2.CheckedChanged += RbPoints_checkedChanged;
+            this.rbPoints3.CheckedChanged += RbPoints_checkedChanged;
+            this.rbPoints4.CheckedChanged += RbPoints_checkedChanged;
+            this.rbPoints5.CheckedChanged += RbPoints_checkedChanged;
+            this.rbPoints6.CheckedChanged += RbPoints_checkedChanged;
+            this.rbPoints7.CheckedChanged += RbPoints_checkedChanged;
+            this.rbPoints8.CheckedChanged += RbPoints_checkedChanged;
+            this.rbPoints9.CheckedChanged += RbPoints_checkedChanged;
+            this.rbPoints10.CheckedChanged += RbPoints_checkedChanged;
+            this.rbPoints11.CheckedChanged += RbPoints_checkedChanged;
+            this.rbPoints12.CheckedChanged += RbPoints_checkedChanged;
+            this.rbPoints13.CheckedChanged += RbPoints_checkedChanged;
+            this.rbPoints14.CheckedChanged += RbPoints_checkedChanged;
+            this.rbPoints15.CheckedChanged += RbPoints_checkedChanged;
+            this.rbPoints16.CheckedChanged += RbPoints_checkedChanged;
+
 
         }
+        //點數的radio button 點擊的事件
+        private void RbPoints_checkedChanged(object sender, EventArgs e)
+        {
+            //LINQ方式,取得radio button 的值
+            var rb = this.groupBoxPoints.Controls.OfType<RadioButton>().FirstOrDefault(n => n.Checked);
 
-       
+            //Console.WriteLine(rb.Text);
+        }
 
         //Load ,讀取資料庫，顯示站碼、種類、動作
         private void BuildingTableUserControl_Load(object sender, EventArgs e)
@@ -169,9 +193,7 @@ namespace CentralＭonitoringSystem.src.views
                     signal.GraphicYCoordinate,
                     signal.TitleContent);
             }
-            var rb = this.groupBoxPoints.Controls.OfType<RadioButton>().FirstOrDefault(n => n.Checked);
-
-            Console.WriteLine(rb);
+            
             //tbGroup.Text = signals[4].GroupNumber;
             //tbSignalDescription.Text = signals[5].SignalDescription;
             //tbSignalDisplayTextNormally.Text = signals[6].SignalDisplayTextNormally;
