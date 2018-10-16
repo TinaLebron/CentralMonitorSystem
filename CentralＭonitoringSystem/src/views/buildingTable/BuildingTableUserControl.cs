@@ -86,40 +86,15 @@ namespace CentralＭonitoringSystem.src.views
             var rb = this.groupBoxPoints.Controls.OfType<RadioButton>().FirstOrDefault(n => n.Checked);
 
             //Console.WriteLine(rb.Text);
-        }
 
-        //Load ,讀取資料庫，顯示站碼、種類、動作
-        private void BuildingTableUserControl_Load(object sender, EventArgs e)
-        {
-            dBHelper = App.MyDBHelper;
-
-            //打開連線
             dBHelper.Open();
-            //讀取資料庫，顯示站碼、種類、動作
-            gridViewStationCode.DataSource = dBHelper.SelectDatafromSensor();
-            dBHelper.Close();
-
-            //一開始進入畫面,種類設定,動作設定 UI要出現值
-            SetSensorUI(0);
-            //從sensingPoint table select資料，然後秀出在信號UI上
-        
-
-           // SetSignalUI();
-
-            //new 6個model,因為站碼1只有6個點數有值
-            //for (int i = 0; i < 6; i++)
-            //{
-            //    signals.Add(new Signal());
-            //}
-            
-            dBHelper.Open();
-            SqlDataReader reader = dBHelper.SelectFromSensingPointWithSensorID(1);
+            SqlDataReader reader = dBHelper.SelectFromSensingPointWithSensorID(Int32.Parse(rb.Text) );
             if (reader.HasRows)
             {
                 Console.WriteLine("有資料");
                 while (reader.Read())
                 {
-                    
+
                     int point = (int)reader["Points"];
                     bool signalType = (bool)reader["SignalType"];
                     bool alarmOutput = (bool)reader["AlarmOutput"];
@@ -151,20 +126,29 @@ namespace CentralＭonitoringSystem.src.views
                     // Console.WriteLine("信號型式: " + ((signalType == true) ? "常開" : "常閉"));
                     Console.WriteLine("--------------------------------------");
                     //將資料set進model
-                    signals.Add(new Signal(point, 
-                        signalType, 
-                        alarmOutput, 
-                        singalPreset, 
-                        groupNumber, 
-                        signalDescription, 
-                        signalDisplayTextNormally, 
-                        signalAnomalyDisplayText, 
-                        normalSignalFileName, 
-                        signalAnomalyFileName, 
-                        graphicXCoordinate, 
-                        graphicYCoordinate, 
+                    signals.Add(new Signal(point,
+                        signalType,
+                        alarmOutput,
+                        singalPreset,
+                        groupNumber,
+                        signalDescription,
+                        signalDisplayTextNormally,
+                        signalAnomalyDisplayText,
+                        normalSignalFileName,
+                        signalAnomalyFileName,
+                        graphicXCoordinate,
+                        graphicYCoordinate,
                         titleContent));
-                    
+
+                    tbGroup.Text = signals[0].GroupNumber;
+                    tbSignalDescription.Text = signals[0].SignalDescription;
+                    tbSignalDisplayTextNormally.Text = signals[0].SignalDisplayTextNormally;
+                    tbSignalAnomalyDisplayText.Text = signals[0].SignalAnomalyDisplayText;
+                    tbNormalSignalFileName.Text = signals[0].NormalSignalFileName;
+                    tbSignalAnomalyFileName.Text = signals[0].SignalAnomalyFileName;
+                    tbXCoordinate.Text = signals[0].GraphicXCoordinate;
+                    tbYCoordinate.Text = signals[0].GraphicYCoordinate;
+                    tbTitleContent.Text = signals[0].TitleContent;
                 }
             }
             else
@@ -173,7 +157,7 @@ namespace CentralＭonitoringSystem.src.views
             }
             reader.Close();
             dBHelper.Close();
-            
+
             Console.WriteLine("印出站點1信號table所有資料");
 
             foreach (Signal signal in signals)
@@ -193,16 +177,35 @@ namespace CentralＭonitoringSystem.src.views
                     signal.GraphicYCoordinate,
                     signal.TitleContent);
             }
+        }
+
+        //Load ,讀取資料庫，顯示站碼、種類、動作
+        private void BuildingTableUserControl_Load(object sender, EventArgs e)
+        {
+            dBHelper = App.MyDBHelper;
+
+            //打開連線
+            dBHelper.Open();
+            //讀取資料庫，顯示站碼、種類、動作
+            gridViewStationCode.DataSource = dBHelper.SelectDatafromSensor();
+            dBHelper.Close();
+
+            //一開始進入畫面,種類設定,動作設定 UI要出現值
+            SetSensorUI(0);
+            //從sensingPoint table select資料，然後秀出在信號UI上
+        
+
+           // SetSignalUI();
+
+            //new 6個model,因為站碼1只有6個點數有值
+            //for (int i = 0; i < 6; i++)
+            //{
+            //    signals.Add(new Signal());
+            //}
             
-            //tbGroup.Text = signals[4].GroupNumber;
-            //tbSignalDescription.Text = signals[5].SignalDescription;
-            //tbSignalDisplayTextNormally.Text = signals[6].SignalDisplayTextNormally;
-            //tbSignalAnomalyDisplayText.Text = signals[7].SignalAnomalyDisplayText;
-            //tbNormalSignalFileName.Text = signals[8].NormalSignalFileName;
-            //tbSignalAnomalyFileName.Text = signals[9].SignalAnomalyFileName;
-            //tbXCoordinate.Text = signals[10].GraphicXCoordinate;
-            //tbYCoordinate.Text = signals[11].GraphicYCoordinate;
-            //tbTitleContent.Text = signals[12].TitleContent;
+            
+            
+            
         }
 
         
