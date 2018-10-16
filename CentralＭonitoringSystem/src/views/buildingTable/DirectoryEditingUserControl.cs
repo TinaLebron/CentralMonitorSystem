@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace CentralＭonitoringSystem.src.views.buildingTable
 {
-    public partial class DirectoryEditing : UserControl
+    public partial class DirectoryEditingUserControl : UserControl
     {
-        public DirectoryEditing()
+        public DirectoryEditingUserControl()
         {
             InitializeComponent();
         }

@@ -1,6 +1,6 @@
 ﻿namespace CentralＭonitoringSystem.src.views.buildingTable
 {
-    partial class DirectoryEditing
+    partial class DirectoryEditingUserControl
     {
         /// <summary> 
         /// Required designer variable.

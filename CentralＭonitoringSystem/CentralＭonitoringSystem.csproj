@@ -54,17 +54,17 @@
       <DependentUpon>APP.cs</DependentUpon>
     </Compile>
     <Compile Include="src\model\Signal.cs" />
-    <Compile Include="src\views\buildingTable\DirectoryEditing.cs">
+    <Compile Include="src\views\buildingTable\DirectoryEditingUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="src\views\buildingTable\DirectoryEditing.Designer.cs">
-      <DependentUpon>DirectoryEditing.cs</DependentUpon>
+    <Compile Include="src\views\buildingTable\DirectoryEditingUserControl.Designer.cs">
+      <DependentUpon>DirectoryEditingUserControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\views\buildingTable\GroupEditor.cs">
+    <Compile Include="src\views\buildingTable\GroupEditorUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="src\views\buildingTable\GroupEditor.Designer.cs">
-      <DependentUpon>GroupEditor.cs</DependentUpon>
+    <Compile Include="src\views\buildingTable\GroupEditorUserControl.Designer.cs">
+      <DependentUpon>GroupEditorUserControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -98,11 +98,11 @@
     <EmbeddedResource Include="src\views\buildingTable\BuildingTableUserControl.resx">
       <DependentUpon>BuildingTableUserControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\views\buildingTable\DirectoryEditing.resx">
-      <DependentUpon>DirectoryEditing.cs</DependentUpon>
+    <EmbeddedResource Include="src\views\buildingTable\DirectoryEditingUserControl.resx">
+      <DependentUpon>DirectoryEditingUserControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\views\buildingTable\GroupEditor.resx">
-      <DependentUpon>GroupEditor.cs</DependentUpon>
+    <EmbeddedResource Include="src\views\buildingTable\GroupEditorUserControl.resx">
+      <DependentUpon>GroupEditorUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

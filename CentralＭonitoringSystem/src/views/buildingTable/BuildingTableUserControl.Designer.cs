@@ -60,14 +60,14 @@
             this.rbPoints2 = new System.Windows.Forms.RadioButton();
             this.rbPoints1 = new System.Windows.Forms.RadioButton();
             this.groupBoxSignalPreset = new System.Windows.Forms.GroupBox();
-            this.radioButton9 = new System.Windows.Forms.RadioButton();
-            this.radioButton10 = new System.Windows.Forms.RadioButton();
+            this.rbSignalPresetClose = new System.Windows.Forms.RadioButton();
+            this.rbSignalPresetOpen = new System.Windows.Forms.RadioButton();
             this.groupBoxSignalType = new System.Windows.Forms.GroupBox();
-            this.radioButton7 = new System.Windows.Forms.RadioButton();
-            this.radioButton8 = new System.Windows.Forms.RadioButton();
+            this.rbSignalTypeClose = new System.Windows.Forms.RadioButton();
+            this.rbSignalTypeOpen = new System.Windows.Forms.RadioButton();
             this.groupBoxAlarmOutput = new System.Windows.Forms.GroupBox();
-            this.radioButton5 = new System.Windows.Forms.RadioButton();
-            this.radioButton6 = new System.Windows.Forms.RadioButton();
+            this.rbAlarmOutputClose = new System.Windows.Forms.RadioButton();
+            this.rbAlarmOutputOpen = new System.Windows.Forms.RadioButton();
             this.dataGridViewSelectInformation = new System.Windows.Forms.DataGridView();
             this.tbYCoordinate = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -540,8 +540,8 @@
             // groupBoxSignalPreset
             // 
             this.groupBoxSignalPreset.BackColor = System.Drawing.Color.Gray;
-            this.groupBoxSignalPreset.Controls.Add(this.radioButton9);
-            this.groupBoxSignalPreset.Controls.Add(this.radioButton10);
+            this.groupBoxSignalPreset.Controls.Add(this.rbSignalPresetClose);
+            this.groupBoxSignalPreset.Controls.Add(this.rbSignalPresetOpen);
             this.groupBoxSignalPreset.Font = new System.Drawing.Font("PMingLiU", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.groupBoxSignalPreset.ForeColor = System.Drawing.Color.White;
             this.groupBoxSignalPreset.Location = new System.Drawing.Point(412, 794);
@@ -553,37 +553,37 @@
             this.groupBoxSignalPreset.TabStop = false;
             this.groupBoxSignalPreset.Text = "信號預設";
             // 
-            // radioButton9
+            // rbSignalPresetClose
             // 
-            this.radioButton9.AutoSize = true;
-            this.radioButton9.Font = new System.Drawing.Font("PMingLiU", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.radioButton9.Location = new System.Drawing.Point(61, 166);
-            this.radioButton9.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
-            this.radioButton9.Name = "radioButton9";
-            this.radioButton9.Size = new System.Drawing.Size(133, 46);
-            this.radioButton9.TabIndex = 1;
-            this.radioButton9.TabStop = true;
-            this.radioButton9.Text = "常閉";
-            this.radioButton9.UseVisualStyleBackColor = true;
+            this.rbSignalPresetClose.AutoSize = true;
+            this.rbSignalPresetClose.Font = new System.Drawing.Font("PMingLiU", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.rbSignalPresetClose.Location = new System.Drawing.Point(61, 166);
+            this.rbSignalPresetClose.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.rbSignalPresetClose.Name = "rbSignalPresetClose";
+            this.rbSignalPresetClose.Size = new System.Drawing.Size(133, 46);
+            this.rbSignalPresetClose.TabIndex = 1;
+            this.rbSignalPresetClose.TabStop = true;
+            this.rbSignalPresetClose.Text = "常閉";
+            this.rbSignalPresetClose.UseVisualStyleBackColor = true;
             // 
-            // radioButton10
+            // rbSignalPresetOpen
             // 
-            this.radioButton10.AutoSize = true;
-            this.radioButton10.Font = new System.Drawing.Font("PMingLiU", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.radioButton10.Location = new System.Drawing.Point(61, 76);
-            this.radioButton10.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
-            this.radioButton10.Name = "radioButton10";
-            this.radioButton10.Size = new System.Drawing.Size(133, 46);
-            this.radioButton10.TabIndex = 0;
-            this.radioButton10.TabStop = true;
-            this.radioButton10.Text = "常開";
-            this.radioButton10.UseVisualStyleBackColor = true;
+            this.rbSignalPresetOpen.AutoSize = true;
+            this.rbSignalPresetOpen.Font = new System.Drawing.Font("PMingLiU", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.rbSignalPresetOpen.Location = new System.Drawing.Point(61, 76);
+            this.rbSignalPresetOpen.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.rbSignalPresetOpen.Name = "rbSignalPresetOpen";
+            this.rbSignalPresetOpen.Size = new System.Drawing.Size(133, 46);
+            this.rbSignalPresetOpen.TabIndex = 0;
+            this.rbSignalPresetOpen.TabStop = true;
+            this.rbSignalPresetOpen.Text = "常開";
+            this.rbSignalPresetOpen.UseVisualStyleBackColor = true;
             // 
             // groupBoxSignalType
             // 
             this.groupBoxSignalType.BackColor = System.Drawing.Color.Gray;
-            this.groupBoxSignalType.Controls.Add(this.radioButton7);
-            this.groupBoxSignalType.Controls.Add(this.radioButton8);
+            this.groupBoxSignalType.Controls.Add(this.rbSignalTypeClose);
+            this.groupBoxSignalType.Controls.Add(this.rbSignalTypeOpen);
             this.groupBoxSignalType.Font = new System.Drawing.Font("PMingLiU", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.groupBoxSignalType.ForeColor = System.Drawing.Color.White;
             this.groupBoxSignalType.Location = new System.Drawing.Point(412, 260);
@@ -595,37 +595,37 @@
             this.groupBoxSignalType.TabStop = false;
             this.groupBoxSignalType.Text = "信號型式";
             // 
-            // radioButton7
+            // rbSignalTypeClose
             // 
-            this.radioButton7.AutoSize = true;
-            this.radioButton7.Font = new System.Drawing.Font("PMingLiU", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.radioButton7.Location = new System.Drawing.Point(61, 166);
-            this.radioButton7.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
-            this.radioButton7.Name = "radioButton7";
-            this.radioButton7.Size = new System.Drawing.Size(133, 46);
-            this.radioButton7.TabIndex = 1;
-            this.radioButton7.TabStop = true;
-            this.radioButton7.Text = "常閉";
-            this.radioButton7.UseVisualStyleBackColor = true;
+            this.rbSignalTypeClose.AutoSize = true;
+            this.rbSignalTypeClose.Font = new System.Drawing.Font("PMingLiU", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.rbSignalTypeClose.Location = new System.Drawing.Point(61, 166);
+            this.rbSignalTypeClose.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.rbSignalTypeClose.Name = "rbSignalTypeClose";
+            this.rbSignalTypeClose.Size = new System.Drawing.Size(133, 46);
+            this.rbSignalTypeClose.TabIndex = 1;
+            this.rbSignalTypeClose.TabStop = true;
+            this.rbSignalTypeClose.Text = "常閉";
+            this.rbSignalTypeClose.UseVisualStyleBackColor = true;
             // 
-            // radioButton8
+            // rbSignalTypeOpen
             // 
-            this.radioButton8.AutoSize = true;
-            this.radioButton8.Font = new System.Drawing.Font("PMingLiU", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.radioButton8.Location = new System.Drawing.Point(61, 76);
-            this.radioButton8.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
-            this.radioButton8.Name = "radioButton8";
-            this.radioButton8.Size = new System.Drawing.Size(133, 46);
-            this.radioButton8.TabIndex = 0;
-            this.radioButton8.TabStop = true;
-            this.radioButton8.Text = "常開";
-            this.radioButton8.UseVisualStyleBackColor = true;
+            this.rbSignalTypeOpen.AutoSize = true;
+            this.rbSignalTypeOpen.Font = new System.Drawing.Font("PMingLiU", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.rbSignalTypeOpen.Location = new System.Drawing.Point(61, 76);
+            this.rbSignalTypeOpen.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.rbSignalTypeOpen.Name = "rbSignalTypeOpen";
+            this.rbSignalTypeOpen.Size = new System.Drawing.Size(133, 46);
+            this.rbSignalTypeOpen.TabIndex = 0;
+            this.rbSignalTypeOpen.TabStop = true;
+            this.rbSignalTypeOpen.Text = "常開";
+            this.rbSignalTypeOpen.UseVisualStyleBackColor = true;
             // 
             // groupBoxAlarmOutput
             // 
             this.groupBoxAlarmOutput.BackColor = System.Drawing.Color.Gray;
-            this.groupBoxAlarmOutput.Controls.Add(this.radioButton5);
-            this.groupBoxAlarmOutput.Controls.Add(this.radioButton6);
+            this.groupBoxAlarmOutput.Controls.Add(this.rbAlarmOutputClose);
+            this.groupBoxAlarmOutput.Controls.Add(this.rbAlarmOutputOpen);
             this.groupBoxAlarmOutput.Font = new System.Drawing.Font("PMingLiU", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.groupBoxAlarmOutput.ForeColor = System.Drawing.Color.White;
             this.groupBoxAlarmOutput.Location = new System.Drawing.Point(412, 530);
@@ -637,31 +637,31 @@
             this.groupBoxAlarmOutput.TabStop = false;
             this.groupBoxAlarmOutput.Text = "警報輸出";
             // 
-            // radioButton5
+            // rbAlarmOutputClose
             // 
-            this.radioButton5.AutoSize = true;
-            this.radioButton5.Font = new System.Drawing.Font("PMingLiU", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.radioButton5.Location = new System.Drawing.Point(61, 166);
-            this.radioButton5.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
-            this.radioButton5.Name = "radioButton5";
-            this.radioButton5.Size = new System.Drawing.Size(133, 46);
-            this.radioButton5.TabIndex = 1;
-            this.radioButton5.TabStop = true;
-            this.radioButton5.Text = "關閉";
-            this.radioButton5.UseVisualStyleBackColor = true;
+            this.rbAlarmOutputClose.AutoSize = true;
+            this.rbAlarmOutputClose.Font = new System.Drawing.Font("PMingLiU", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.rbAlarmOutputClose.Location = new System.Drawing.Point(61, 166);
+            this.rbAlarmOutputClose.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.rbAlarmOutputClose.Name = "rbAlarmOutputClose";
+            this.rbAlarmOutputClose.Size = new System.Drawing.Size(133, 46);
+            this.rbAlarmOutputClose.TabIndex = 1;
+            this.rbAlarmOutputClose.TabStop = true;
+            this.rbAlarmOutputClose.Text = "關閉";
+            this.rbAlarmOutputClose.UseVisualStyleBackColor = true;
             // 
-            // radioButton6
+            // rbAlarmOutputOpen
             // 
-            this.radioButton6.AutoSize = true;
-            this.radioButton6.Font = new System.Drawing.Font("PMingLiU", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.radioButton6.Location = new System.Drawing.Point(61, 76);
-            this.radioButton6.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
-            this.radioButton6.Name = "radioButton6";
-            this.radioButton6.Size = new System.Drawing.Size(133, 46);
-            this.radioButton6.TabIndex = 0;
-            this.radioButton6.TabStop = true;
-            this.radioButton6.Text = "開啟";
-            this.radioButton6.UseVisualStyleBackColor = true;
+            this.rbAlarmOutputOpen.AutoSize = true;
+            this.rbAlarmOutputOpen.Font = new System.Drawing.Font("PMingLiU", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.rbAlarmOutputOpen.Location = new System.Drawing.Point(61, 76);
+            this.rbAlarmOutputOpen.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.rbAlarmOutputOpen.Name = "rbAlarmOutputOpen";
+            this.rbAlarmOutputOpen.Size = new System.Drawing.Size(133, 46);
+            this.rbAlarmOutputOpen.TabIndex = 0;
+            this.rbAlarmOutputOpen.TabStop = true;
+            this.rbAlarmOutputOpen.Text = "開啟";
+            this.rbAlarmOutputOpen.UseVisualStyleBackColor = true;
             // 
             // dataGridViewSelectInformation
             // 
@@ -931,14 +931,14 @@
         private System.Windows.Forms.RadioButton rbPoints2;
         private System.Windows.Forms.RadioButton rbPoints1;
         private System.Windows.Forms.GroupBox groupBoxSignalPreset;
-        private System.Windows.Forms.RadioButton radioButton9;
-        private System.Windows.Forms.RadioButton radioButton10;
+        private System.Windows.Forms.RadioButton rbSignalPresetClose;
+        private System.Windows.Forms.RadioButton rbSignalPresetOpen;
         private System.Windows.Forms.GroupBox groupBoxSignalType;
-        private System.Windows.Forms.RadioButton radioButton7;
-        private System.Windows.Forms.RadioButton radioButton8;
+        private System.Windows.Forms.RadioButton rbSignalTypeClose;
+        private System.Windows.Forms.RadioButton rbSignalTypeOpen;
         private System.Windows.Forms.GroupBox groupBoxAlarmOutput;
-        private System.Windows.Forms.RadioButton radioButton5;
-        private System.Windows.Forms.RadioButton radioButton6;
+        private System.Windows.Forms.RadioButton rbAlarmOutputClose;
+        private System.Windows.Forms.RadioButton rbAlarmOutputOpen;
         private System.Windows.Forms.RadioButton rbBare;
     }
 }

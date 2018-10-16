@@ -83,12 +83,40 @@ namespace CentralＭonitoringSystem.src.views
         private void RbPoints_checkedChanged(object sender, EventArgs e)
         {
             //LINQ方式,取得radio button 的值
-            var rb = this.groupBoxPoints.Controls.OfType<RadioButton>().FirstOrDefault(n => n.Checked);
+            RadioButton rb = this.groupBoxPoints.Controls.OfType<RadioButton>().FirstOrDefault(n => n.Checked);
 
-            //Console.WriteLine(rb.Text);
+            int position = Int32.Parse(rb.Text) - 1;
 
+            //如果點選的點數資料庫有值秀出來,如果沒值清空
+            if (position < signals.Count)
+            {
+                SetSignalUI(signals[position]);
+            }
+            else
+            {
+                //清空所有singalUI的值
+                ClearSignalUI();
+            }
+
+        }
+
+       
+        //Load ,讀取資料庫，顯示站碼、種類、動作
+        private void BuildingTableUserControl_Load(object sender, EventArgs e)
+        {
+            dBHelper = App.MyDBHelper;
+
+            //打開連線
             dBHelper.Open();
-            SqlDataReader reader = dBHelper.SelectFromSensingPointWithSensorID(Int32.Parse(rb.Text) );
+            //讀取資料庫，顯示站碼、種類、動作
+            gridViewStationCode.DataSource = dBHelper.SelectDatafromSensor();
+            dBHelper.Close();
+
+            //一開始進入畫面,種類設定,動作設定 UI要出現值
+            SetSensorUI(0);
+            
+            dBHelper.Open();
+            SqlDataReader reader = dBHelper.SelectFromSensingPointWithSensorID(1);
             if (reader.HasRows)
             {
                 Console.WriteLine("有資料");
@@ -109,21 +137,6 @@ namespace CentralＭonitoringSystem.src.views
                     string graphicYCoordinate = string.Format("{0}", (string)reader["GraphicYCoordinate"]);
                     string titleContent = string.Format("{0}", (string)reader["TitleContent"]);
 
-
-                    //Console.WriteLine("點數: " + point + "\n" +
-                    //                  "信號型式: " + ((signalType == true) ? "常開" : "常閉") + "\n" + 
-                    //                  "警報輸出: " + ((alarmOutput == true) ? "開啟" : "關閉") + "\n" +
-                    //                  "信號預設: " + ((singalPreset == true) ? "常開" : "常閉") + "\n" +
-                    //                  "群編號: " + groupNumber + "\n" +
-                    //                  "信號說明: " + signalDescription + "\n" +
-                    //                  "信號正常顯示文字: " + signalDisplayTextNormally + "\n" +
-                    //                  "信號異常顯示文字: " + signalAnomalyDisplayText + "\n" +
-                    //                  "信號正常對應圖形檔名: " + normalSignalFileName + "\n" +
-                    //                  "信號異常對應圖形檔名: " + signalAnomalyFileName + "\n" +
-                    //                  "圖形X座標: " + graphicXCoordinate + "\n" +
-                    //                  "圖形Y座標: " + graphicYCoordinate + "\n" +
-                    //                  "標題內容: " + titleContent + "\n" );
-                    // Console.WriteLine("信號型式: " + ((signalType == true) ? "常開" : "常閉"));
                     Console.WriteLine("--------------------------------------");
                     //將資料set進model
                     signals.Add(new Signal(point,
@@ -140,15 +153,7 @@ namespace CentralＭonitoringSystem.src.views
                         graphicYCoordinate,
                         titleContent));
 
-                    tbGroup.Text = signals[0].GroupNumber;
-                    tbSignalDescription.Text = signals[0].SignalDescription;
-                    tbSignalDisplayTextNormally.Text = signals[0].SignalDisplayTextNormally;
-                    tbSignalAnomalyDisplayText.Text = signals[0].SignalAnomalyDisplayText;
-                    tbNormalSignalFileName.Text = signals[0].NormalSignalFileName;
-                    tbSignalAnomalyFileName.Text = signals[0].SignalAnomalyFileName;
-                    tbXCoordinate.Text = signals[0].GraphicXCoordinate;
-                    tbYCoordinate.Text = signals[0].GraphicYCoordinate;
-                    tbTitleContent.Text = signals[0].TitleContent;
+                    
                 }
             }
             else
@@ -177,46 +182,63 @@ namespace CentralＭonitoringSystem.src.views
                     signal.GraphicYCoordinate,
                     signal.TitleContent);
             }
+
+
         }
 
-        //Load ,讀取資料庫，顯示站碼、種類、動作
-        private void BuildingTableUserControl_Load(object sender, EventArgs e)
+
+
+
+
+        //設定signalUI
+        private void SetSignalUI(Signal signal)
         {
-            dBHelper = App.MyDBHelper;
 
-            //打開連線
-            dBHelper.Open();
-            //讀取資料庫，顯示站碼、種類、動作
-            gridViewStationCode.DataSource = dBHelper.SelectDatafromSensor();
-            dBHelper.Close();
+            if (signal.SignalType)
+                rbSignalTypeOpen.Checked = true;
+            else
+                rbSignalTypeClose.Checked = true;
+            if (signal.AlarmOutput)
+                rbAlarmOutputOpen.Checked = true;
+            else
+                rbAlarmOutputClose.Checked = true;
+            if (signal.SignalPreset)
+                rbSignalPresetOpen.Checked = true;
+            else
+                rbSignalPresetClose.Checked = true;
 
-            //一開始進入畫面,種類設定,動作設定 UI要出現值
-            SetSensorUI(0);
-            //從sensingPoint table select資料，然後秀出在信號UI上
-        
-
-           // SetSignalUI();
-
-            //new 6個model,因為站碼1只有6個點數有值
-            //for (int i = 0; i < 6; i++)
-            //{
-            //    signals.Add(new Signal());
-            //}
-            
-            
-            
-            
+            tbGroup.Text = signal.GroupNumber;
+            tbSignalDescription.Text = signal.SignalDescription;
+            tbSignalDisplayTextNormally.Text = signal.SignalDisplayTextNormally;
+            tbSignalAnomalyDisplayText.Text = signal.SignalAnomalyDisplayText;
+            tbNormalSignalFileName.Text = signal.NormalSignalFileName;
+            tbSignalAnomalyFileName.Text = signal.SignalAnomalyFileName;
+            tbXCoordinate.Text = signal.GraphicXCoordinate;
+            tbYCoordinate.Text = signal.GraphicYCoordinate;
+            tbTitleContent.Text = signal.TitleContent;
+          
         }
-
-        
-
-        
-
-        //從sensingPoint table select資料，然後秀出在信號UI上
-        private void SetSignalUI()
+        //清空所有singalUI的值
+        private void ClearSignalUI()
         {
-           
+            tbGroup.Text = "";
+            tbSignalDescription.Text = "";
+            tbSignalDisplayTextNormally.Text = "";
+            tbSignalAnomalyDisplayText.Text = "";
+            tbNormalSignalFileName.Text = "";
+            tbSignalAnomalyFileName.Text = "";
+            tbXCoordinate.Text = "";
+            tbYCoordinate.Text = "";
+            tbTitleContent.Text = "";
+
+            rbSignalTypeOpen.Checked = false;
+            rbSignalTypeClose.Checked = false;
+            rbAlarmOutputOpen.Checked = false;
+            rbAlarmOutputClose.Checked = false;
+            rbSignalPresetOpen.Checked = false;
+            rbSignalPresetClose.Checked = false;
         }
+
         //測試
         //private void RbPoints_CanFocus(object sender, EventArgs e)
         //{
@@ -310,29 +332,29 @@ namespace CentralＭonitoringSystem.src.views
             {
                 if ((bool)rSensorAndGroupNumber["SignalType"] == true)
                 {
-                    radioButton8.Checked = true;
+                    rbSignalTypeOpen.Checked = true;
                 }
                 else
                 {
-                    radioButton7.Checked = true;
+                    rbSignalTypeClose.Checked = true;
                 }
                 if((bool)rSensorAndGroupNumber["AlarmOutput"] == true)
                 {
                     
-                    radioButton6.Checked = true;
+                    rbAlarmOutputOpen.Checked = true;
                 }
                 else
                 {
-                    radioButton5.Checked = true;
+                    rbAlarmOutputClose.Checked = true;
                 }
                 if ((bool)rSensorAndGroupNumber["SignalPreset"] == true)
                 {
                     
-                    radioButton10.Checked = true;
+                    rbSignalPresetOpen.Checked = true;
                 }
                 else 
                 {
-                    radioButton9.Checked = true;
+                    rbSignalPresetClose.Checked = true;
                 }
 
 
