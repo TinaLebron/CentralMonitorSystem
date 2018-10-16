@@ -55,10 +55,11 @@ namespace CentralＭonitoringSystem.src.views
             rbBare.CheckedChanged += RbSensor_checkedChanged;
             this.BindingContextChanged += BuildingTableUserControl_BindingContextChanged;
 
-            this.rbPoints1.CheckedChanged += RbPoints_CanFocus;
-            this.rbPoints2.CheckedChanged += RbPoints_CanFocus;
-            this.rbPoints3.CheckedChanged += RbPoints_CanFocus;
+            //this.rbPoints1.CheckedChanged += RbPoints_CanFocus;
+            //this.rbPoints2.CheckedChanged += RbPoints_CanFocus;
+            //this.rbPoints3.CheckedChanged += RbPoints_CanFocus;
             
+
         }
 
        
@@ -168,7 +169,23 @@ namespace CentralＭonitoringSystem.src.views
                     signal.GraphicYCoordinate,
                     signal.TitleContent);
             }
+            var rb = this.groupBoxPoints.Controls.OfType<RadioButton>().FirstOrDefault(n => n.Checked);
+
+            Console.WriteLine(rb);
+            //tbGroup.Text = signals[4].GroupNumber;
+            //tbSignalDescription.Text = signals[5].SignalDescription;
+            //tbSignalDisplayTextNormally.Text = signals[6].SignalDisplayTextNormally;
+            //tbSignalAnomalyDisplayText.Text = signals[7].SignalAnomalyDisplayText;
+            //tbNormalSignalFileName.Text = signals[8].NormalSignalFileName;
+            //tbSignalAnomalyFileName.Text = signals[9].SignalAnomalyFileName;
+            //tbXCoordinate.Text = signals[10].GraphicXCoordinate;
+            //tbYCoordinate.Text = signals[11].GraphicYCoordinate;
+            //tbTitleContent.Text = signals[12].TitleContent;
         }
+
+        
+
+        
 
         //從sensingPoint table select資料，然後秀出在信號UI上
         private void SetSignalUI()
@@ -176,11 +193,11 @@ namespace CentralＭonitoringSystem.src.views
            
         }
         //測試
-        private void RbPoints_CanFocus(object sender, EventArgs e)
-        {
-            RadioButton rb = (RadioButton)sender;
-            Console.WriteLine("RadioButton : " + rb.Text);
-        }
+        //private void RbPoints_CanFocus(object sender, EventArgs e)
+        //{
+        //    RadioButton rb = (RadioButton)sender;
+        //    Console.WriteLine("RadioButton : " + rb.Text);
+        //}
         //測試
         private void BuildingTableUserControl_BindingContextChanged(object sender, EventArgs e)
         {
@@ -381,6 +398,11 @@ namespace CentralＭonitoringSystem.src.views
         {
             strPoint = "1";
             SelectDatafromSensorAndGroupNumber();
+        }
+
+        private void groupBoxPoints_Enter(object sender, EventArgs e)
+        {
+            
         }
     }
 }

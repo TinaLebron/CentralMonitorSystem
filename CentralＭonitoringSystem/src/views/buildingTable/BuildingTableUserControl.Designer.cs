@@ -327,6 +327,7 @@
             this.groupBoxPoints.TabIndex = 33;
             this.groupBoxPoints.TabStop = false;
             this.groupBoxPoints.Text = "點數";
+            this.groupBoxPoints.Enter += new System.EventHandler(this.groupBoxPoints_Enter);
             // 
             // rbPoints16
             // 
@@ -535,7 +536,6 @@
             this.rbPoints1.TabStop = true;
             this.rbPoints1.Text = "1";
             this.rbPoints1.UseVisualStyleBackColor = true;
-       
             // 
             // groupBoxSignalPreset
             // 

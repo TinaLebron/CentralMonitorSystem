@@ -66,18 +66,6 @@
     <Compile Include="src\views\buildingTable\GroupEditor.Designer.cs">
       <DependentUpon>GroupEditor.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\views\record\DirectoryEditing.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="src\views\record\DirectoryEditing.Designer.cs">
-      <DependentUpon>DirectoryEditing.cs</DependentUpon>
-    </Compile>
-    <Compile Include="src\views\record\GroupEditor.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="src\views\record\GroupEditor.Designer.cs">
-      <DependentUpon>GroupEditor.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="src\views\buildingTable\BuildingTableUserControl.cs">
@@ -110,13 +98,10 @@
     <EmbeddedResource Include="src\views\buildingTable\BuildingTableUserControl.resx">
       <DependentUpon>BuildingTableUserControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\views\buildingTable\GroupEditor.resx">
-      <DependentUpon>GroupEditor.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\views\record\DirectoryEditing.resx">
+    <EmbeddedResource Include="src\views\buildingTable\DirectoryEditing.resx">
       <DependentUpon>DirectoryEditing.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\views\record\GroupEditor.resx">
+    <EmbeddedResource Include="src\views\buildingTable\GroupEditor.resx">
       <DependentUpon>GroupEditor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
