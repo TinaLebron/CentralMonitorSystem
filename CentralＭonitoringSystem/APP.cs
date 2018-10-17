@@ -29,6 +29,7 @@ namespace CentralＭonitoringSystem
                 else
                     return null;
             }
+
         }
 
         //主頁

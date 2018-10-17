@@ -100,6 +100,7 @@ namespace CentralＭonitoringSystem.src.views
 
         }
 
+        
        
         //Load ,讀取資料庫，顯示站碼、種類、動作
         private void BuildingTableUserControl_Load(object sender, EventArgs e)
@@ -114,9 +115,10 @@ namespace CentralＭonitoringSystem.src.views
 
             //一開始進入畫面,種類設定,動作設定 UI要出現值
             SetSensorUI(0);
+
             
             dBHelper.Open();
-            SqlDataReader reader = dBHelper.SelectFromSensingPointWithSensorID(1);
+            SqlDataReader reader = dBHelper.SelectFromSensingPointWithSensorID(gridViewStationCode.CurrentCell.RowIndex);
             if (reader.HasRows)
             {
                 Console.WriteLine("有資料");
@@ -152,8 +154,6 @@ namespace CentralＭonitoringSystem.src.views
                         graphicXCoordinate,
                         graphicYCoordinate,
                         titleContent));
-
-                    
                 }
             }
             else
@@ -185,11 +185,7 @@ namespace CentralＭonitoringSystem.src.views
 
 
         }
-
-
-
-
-
+        
         //設定signalUI
         private void SetSignalUI(Signal signal)
         {
@@ -254,9 +250,9 @@ namespace CentralＭonitoringSystem.src.views
         private void SetSensorUI(int index)
         {
             DataGridViewRow currentRow = gridViewStationCode.Rows[index];
-
             string sTyple = currentRow.Cells[1].Value.ToString();
             string sAction = currentRow.Cells[2].Value.ToString();
+
             if (sTyple.Equals("16DI"))
             {
                 rb16DI.Checked = true;

@@ -167,12 +167,6 @@
     <None Include="Resources\監控系統圖片3.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GLButton\GLButton.csproj">
-      <Project>{0958D155-F06C-48D1-BFAA-347002CF73FF}</Project>
-      <Name>GLButton</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\icons8-video-editing-80.png" />
   </ItemGroup>
   <ItemGroup>
@@ -205,6 +199,11 @@
   <ItemGroup>
     <None Include="Resources\確定2.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\GLButton\GLButton.csproj">
+      <Project>{0958d155-f06c-48d1-bfaa-347002cf73ff}</Project>
+      <Name>GLButton</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
