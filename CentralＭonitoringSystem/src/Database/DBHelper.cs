@@ -37,6 +37,33 @@ namespace CentralＭonitoringSystem.src.Database
             con.Open();
         }
 
+        //儲存建表資料
+        public void SaveBuildingTable()
+        {
+
+            SqlConnection con = new SqlConnection(scsb.ToString());
+            con.Open();
+            string strSQL = "update SensingPoint set SignalType=@Signaltype,AlarmOutput=@Alarmoutput,SignalPreset=@SignalPreset,GroupNumber=@GroupNumber,SignalDescription=@Signaldescription,SignalDisplayTextNormally=@SignalDisplayTextNormally,SignalAnomalyDisplayText=@SignalAnomalyDisplayText,NormalSignalFileName=@NormalSignalFileName,SignalAnomalyFileName=@SignalAnomalyFileName,GraphicXCoordinate=@GraphicXCoordinate,GraphicYCoordinate=@GraphicYCoordinate,TitleContent=@TitleContent where SensingPoint=@SensingPoint and SensorID=@SensorID";
+            SqlCommand cmd = new SqlCommand(strSQL, con);
+            cmd.Parameters.AddWithValue("@Signaltype", );
+            cmd.Parameters.AddWithValue("@Alarmoutput", );
+            cmd.Parameters.AddWithValue("@SignalPreset", );
+            cmd.Parameters.AddWithValue("@GroupNumber", tbGroup.text);
+            cmd.Parameters.AddWithValue("@Signaldescription", tbSignalDescription.text);
+            cmd.Parameters.AddWithValue("@SignalDisplayTextNormally", tbSignalDisplayTextNormally.text);
+            cmd.Parameters.AddWithValue("@SignalAnomalyDisplayText", tbSignalAnomalyDisplayText.Text);
+            cmd.Parameters.AddWithValue("@NormalSignalFileName", tbNormalSignalFileName.Text);
+            cmd.Parameters.AddWithValue("@SignalAnomalyFileName", tbSignalAnomalyFileName.Text);
+            cmd.Parameters.AddWithValue("@GraphicXCoordinate", tbXCoordinate.Text);
+            cmd.Parameters.AddWithValue("@GraphicYCoordinate", tbYCoordinate.Text);
+            cmd.Parameters.AddWithValue("@TitleContent", tbTitleContent.Text);
+
+            int rows = cmd.ExecuteNonQuery();
+            con.Close();
+            MessageBox.Show("修改完成");
+
+        }
+
         //讀取sensor表，顯示站碼、種類、動作
         public DataTable SelectDatafromSensor()
         {

@@ -447,5 +447,10 @@ namespace CentralＭonitoringSystem.src.views
         {
             
         }
+
+        private void BtnSave_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

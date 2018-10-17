@@ -60,6 +60,12 @@
     <Compile Include="src\views\buildingTable\DirectoryEditingUserControl.Designer.cs">
       <DependentUpon>DirectoryEditingUserControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="src\views\buildingTable\GraphicPositioningUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="src\views\buildingTable\GraphicPositioningUserControl.Designer.cs">
+      <DependentUpon>GraphicPositioningUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="src\views\buildingTable\GroupEditorUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -100,6 +106,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="src\views\buildingTable\DirectoryEditingUserControl.resx">
       <DependentUpon>DirectoryEditingUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\views\buildingTable\GraphicPositioningUserControl.resx">
+      <DependentUpon>GraphicPositioningUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\views\buildingTable\GroupEditorUserControl.resx">
       <DependentUpon>GroupEditorUserControl.cs</DependentUpon>
