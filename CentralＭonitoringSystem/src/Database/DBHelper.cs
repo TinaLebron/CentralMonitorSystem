@@ -37,6 +37,33 @@ namespace CentralＭonitoringSystem.src.Database
             con.Open();
         }
 
+        //儲存建表資料
+        public void SaveBuildingTable()
+        {
+
+            //SqlConnection con = new SqlConnection(scsb.ToString());
+            //con.Open();
+            //string strSQL = "update SensingPoint set SignalType=@Signaltype,AlarmOutput=@Alarmoutput,SignalPreset=@SignalPreset,GroupNumber=@GroupNumber,SignalDescription=@Signaldescription,SignalDisplayTextNormally=@SignalDisplayTextNormally,SignalAnomalyDisplayText=@SignalAnomalyDisplayText,NormalSignalFileName=@NormalSignalFileName,SignalAnomalyFileName=@SignalAnomalyFileName,GraphicXCoordinate=@GraphicXCoordinate,GraphicYCoordinate=@GraphicYCoordinate,TitleContent=@TitleContent where SensingPoint=@SensingPoint and SensorID=@SensorID";
+            //SqlCommand cmd = new SqlCommand(strSQL, con);
+            //cmd.Parameters.AddWithValue("@Signaltype", );
+            //cmd.Parameters.AddWithValue("@Alarmoutput", );
+            //cmd.Parameters.AddWithValue("@SignalPreset", );
+            //cmd.Parameters.AddWithValue("@GroupNumber", tbGroup.text);
+            //cmd.Parameters.AddWithValue("@Signaldescription", tbSignalDescription.text);
+            //cmd.Parameters.AddWithValue("@SignalDisplayTextNormally", tbSignalDisplayTextNormally.text);
+            //cmd.Parameters.AddWithValue("@SignalAnomalyDisplayText", tbSignalAnomalyDisplayText.Text);
+            //cmd.Parameters.AddWithValue("@NormalSignalFileName", tbNormalSignalFileName.Text);
+            //cmd.Parameters.AddWithValue("@SignalAnomalyFileName", tbSignalAnomalyFileName.Text);
+            //cmd.Parameters.AddWithValue("@GraphicXCoordinate", tbXCoordinate.Text);
+            //cmd.Parameters.AddWithValue("@GraphicYCoordinate", tbYCoordinate.Text);
+            //cmd.Parameters.AddWithValue("@TitleContent", tbTitleContent.Text);
+
+            //int rows = cmd.ExecuteNonQuery();
+            //con.Close();
+            //MessageBox.Show("修改完成");
+
+        }
+
         //讀取sensor表，顯示站碼、種類、動作
         public DataTable SelectDatafromSensor()
         {
@@ -44,8 +71,8 @@ namespace CentralＭonitoringSystem.src.Database
             SqlConnection con = new SqlConnection(scsb.ToString());
             con.Open();
             DataTable dt = new DataTable();
-            SqlDataAdapter adapt = new SqlDataAdapter("Select StationCode as 站碼,Kind as 種類,Action as 動作 From Sensor ", con);
-
+            SqlDataAdapter adapt = new SqlDataAdapter("Select StationCode as 站碼,Type as 種類,Action as 動作 From Sensor ", con);
+            
             adapt.Fill(dt);
             return dt;
         }
@@ -69,14 +96,26 @@ namespace CentralＭonitoringSystem.src.Database
         }
 
         //讀取sensor與GroupNumber表,顯示建表所有表格
-        public SqlDataReader SelectDatafromSensorAndGroupNumber()
+        public SqlDataReader SelectDatafromSensingPoint(int rowIndex,string SensorsNum)
         {
-            string strSQL = "select * from SensingPoint where SensingPointID=1 and SensorID=1";
+            
+            string strSQL = "select * from SensingPoint where Points=@SensingNum and SensorID=@SensorsNum";
             SqlCommand cmd = new SqlCommand(strSQL, con);
+            cmd.Parameters.AddWithValue("@SensingNum", rowIndex);
+            cmd.Parameters.AddWithValue("@SensorsNum", SensorsNum);
+            SqlDataReader reader = cmd.ExecuteReader();
+            
+            return reader;
+        }
+        //讀取sensor表,顯示建表所有表格
+        public SqlDataReader SelectFromSensingPointWithSensorID(int sensorID)
+        {
 
+            string strSQL = "select * from SensingPoint where SensorID=@sensorID";
+            SqlCommand cmd = new SqlCommand(strSQL, con);
+            cmd.Parameters.AddWithValue("@sensorID", sensorID);
             SqlDataReader reader = cmd.ExecuteReader();
 
-            
             return reader;
         }
 
