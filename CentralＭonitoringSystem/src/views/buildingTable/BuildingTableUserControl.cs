@@ -116,9 +116,9 @@ namespace CentralＭonitoringSystem.src.views
             //一開始進入畫面,種類設定,動作設定 UI要出現值
             SetSensorUI(0);
 
-            
+            //gridViewStationCode.CurrentCell.RowIndex;
             dBHelper.Open();
-            SqlDataReader reader = dBHelper.SelectFromSensingPointWithSensorID(gridViewStationCode.CurrentCell.RowIndex);
+            SqlDataReader reader = dBHelper.SelectFromSensingPointWithSensorID(1);
             if (reader.HasRows)
             {
                 Console.WriteLine("有資料");
