@@ -110,7 +110,72 @@ namespace CentralＭonitoringSystem
         private void MenuTreeView_AfterSelect(object sender,System.Windows.Forms.TreeViewEventArgs e)
         {
             mPage = Page.Home;
+
             SwitchPage(mPage);
+
+            Image image = null;
+
+            if (e.Node.Parent != null)
+            {
+                int childIndex = e.Node.Index;
+                int parentIndex = e.Node.Parent.Index;
+
+                Console.WriteLine("父節點 : " + parentIndex + "子節點 : " + childIndex);
+
+                if (parentIndex == 0)
+                {
+
+                }
+                else if (parentIndex == 1)
+                {
+                    switch (childIndex)
+                    {
+                        case 0:
+                            image = global::CentralＭonitoringSystem.Properties.Resources.anti_theft_floor_1;
+                            break;
+                        case 1:
+                            image = global::CentralＭonitoringSystem.Properties.Resources.anti_theft_floor_2;
+                            break;
+                        case 2:
+                            image = global::CentralＭonitoringSystem.Properties.Resources.anti_theft_floor_3;
+                            break;
+                    }
+                }
+                else if (parentIndex == 2)
+                {
+                    image = global::CentralＭonitoringSystem.Properties.Resources.garden_lamp;
+                }
+                else if (parentIndex == 3)
+                {
+                    image = global::CentralＭonitoringSystem.Properties.Resources.public_area_detector;
+                }
+                else if (parentIndex == 4)
+                {
+
+                }
+            }
+            else
+            {
+                int index = e.Node.Index;
+                Console.WriteLine("父節點 : " + index);
+                switch (index)
+                {
+                    case 0:
+                        image = global::CentralＭonitoringSystem.Properties.Resources.監控系統圖片3;
+                        break;
+                    case 1:
+                        image = global::CentralＭonitoringSystem.Properties.Resources.監控系統圖片3;
+                        break;
+                    case 2:
+                        image = global::CentralＭonitoringSystem.Properties.Resources.監控系統圖片3;
+                        break;
+                    case 3:
+                        image = global::CentralＭonitoringSystem.Properties.Resources.監控系統圖片3;
+                        break;
+                }
+            }
+            homeUserControl.SetImage(image);
+
         }
 
         //建立資料庫本機端

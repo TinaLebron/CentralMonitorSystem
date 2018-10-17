@@ -77,48 +77,46 @@ namespace CentralＭonitoringSystem.src.views
             this.rbPoints15.CheckedChanged += RbPoints_checkedChanged;
             this.rbPoints16.CheckedChanged += RbPoints_checkedChanged;
 
-
+            
         }
-        //點數的radio button 點擊的事件
-        private void RbPoints_checkedChanged(object sender, EventArgs e)
+
+        //生命週期回調函數ContextChanged(
+        private void BuildingTableUserControl_BindingContextChanged(object sender, EventArgs e)
         {
-            //LINQ方式,取得radio button 的值
-            RadioButton rb = this.groupBoxPoints.Controls.OfType<RadioButton>().FirstOrDefault(n => n.Checked);
-
-            int position = Int32.Parse(rb.Text) - 1;
-
-            //如果點選的點數資料庫有值秀出來,如果沒值清空
-            if (position < signals.Count)
-            {
-                SetSignalUI(signals[position]);
-            }
-            else
-            {
-                //清空所有singalUI的值
-                ClearSignalUI();
-            }
-
+            Console.WriteLine("BuildingTableUserControl_BindingContextChanged");
         }
 
-        
-       
-        //Load ,讀取資料庫，顯示站碼、種類、動作
+        //生命週期回調函數Load (一開始要顯示的UI函式寫在這)
         private void BuildingTableUserControl_Load(object sender, EventArgs e)
         {
             dBHelper = App.MyDBHelper;
-
             //打開連線
             dBHelper.Open();
             //讀取資料庫，顯示站碼、種類、動作
             gridViewStationCode.DataSource = dBHelper.SelectDatafromSensor();
-            dBHelper.Close();
 
             //一開始進入畫面,種類設定,動作設定 UI要出現值
             SetSensorUI(0);
 
-            //gridViewStationCode.CurrentCell.RowIndex;
-            dBHelper.Open();
+            //DBHelper去資料庫讀取資料回來
             SqlDataReader reader = dBHelper.SelectFromSensingPointWithSensorID(1);
+
+            //將讀取回來的資料set進Model
+            SetSqlDataToModel(reader);
+            
+            reader.Close();
+            dBHelper.Close();
+
+            //預設顯示第一筆資料
+            if(signals.Count > 0)
+                SetSignalUI(signals[0]);
+
+            //印出資料
+            ShowDataOnConsole();
+        }
+        //將從資料庫讀取回來的資料set進Model
+        private void SetSqlDataToModel(SqlDataReader reader)
+        {
             if (reader.HasRows)
             {
                 Console.WriteLine("有資料");
@@ -160,11 +158,12 @@ namespace CentralＭonitoringSystem.src.views
             {
                 Console.WriteLine("SensingPoint table裡面沒有任何資料");
             }
-            reader.Close();
-            dBHelper.Close();
+        }
 
+        //將資料印出在控制台
+        private void ShowDataOnConsole()
+        {
             Console.WriteLine("印出站點1信號table所有資料");
-
             foreach (Signal signal in signals)
             {
                 Console.WriteLine("點數: {0}\t信號型式: {1}\t警報輸出: {2}\t信號預設: {3}\t群編號: {4}\t 信號說明:{5}\t信號正常顯示文字 :{6}\t信號異常顯示文字 :{7}\t信號正常對應圖形檔名: {8}\t信號正常對應圖形檔名: {9}\t圖形X座標: {10}\t圖形Y座標: {11}\t標題內容: {12}",
@@ -182,14 +181,85 @@ namespace CentralＭonitoringSystem.src.views
                     signal.GraphicYCoordinate,
                     signal.TitleContent);
             }
+        }
 
+        //點數的radio button 點擊的事件
+        private void RbPoints_checkedChanged(object sender, EventArgs e)
+        {
+            //LINQ方式,取得radio button 的值
+            RadioButton rb = this.groupBoxPoints.Controls.OfType<RadioButton>().FirstOrDefault(n => n.Checked);
+
+            int position = Int32.Parse(rb.Text) - 1;
+
+            //如果點選的點數資料庫有值秀出來,如果沒值清空
+            if (position < signals.Count)
+            {
+                SetSignalUI(signals[position]);
+            }
+            else
+            {
+                //清空所有singalUI的值
+                ClearSignalUI();
+            }
 
         }
-        
-        //設定signalUI
+
+        //將Model的值放進signal UI
         private void SetSignalUI(Signal signal)
         {
+            switch (signal.Point)
+            {
+                case 1:
+                    rbPoints1.Checked = true;
+                    break;
+                case 2:
+                    rbPoints2.Checked = true;
+                    break;
+                case 3:
+                    rbPoints3.Checked = true;
+                    break;
+                case 4:
+                    rbPoints4.Checked = true;
+                    break;
+                case 5:
+                    rbPoints5.Checked = true;
+                    break;
+                case 6:
+                    rbPoints6.Checked = true;
+                    break;
+                case 7:
+                    rbPoints7.Checked = true;
+                    break;
+                case 8:
+                    rbPoints8.Checked = true;
+                    break;
+                case 9:
+                    rbPoints9.Checked = true;
+                    break;
+                case 10:
+                    rbPoints10.Checked = true;
+                    break;
+                case 11:
+                    rbPoints11.Checked = true;
+                    break;
+                case 12:
+                    rbPoints12.Checked = true;
+                    break;
+                case 13:
+                    rbPoints13.Checked = true;
+                    break;
+                case 14:
+                    rbPoints14.Checked = true;
+                    break;
+                case 15:
+                    rbPoints15.Checked = true;
+                    break;
+                case 16:
+                    rbPoints16.Checked = true;
+                    break;
 
+            }
+            
             if (signal.SignalType)
                 rbSignalTypeOpen.Checked = true;
             else
@@ -235,17 +305,6 @@ namespace CentralＭonitoringSystem.src.views
             rbSignalPresetClose.Checked = false;
         }
 
-        //測試
-        //private void RbPoints_CanFocus(object sender, EventArgs e)
-        //{
-        //    RadioButton rb = (RadioButton)sender;
-        //    Console.WriteLine("RadioButton : " + rb.Text);
-        //}
-        //測試
-        private void BuildingTableUserControl_BindingContextChanged(object sender, EventArgs e)
-        {
-            Console.WriteLine("BuildingTableUserControl_BindingContextChanged");
-        }
         //設定Sensor UI
         private void SetSensorUI(int index)
         {
@@ -369,7 +428,7 @@ namespace CentralＭonitoringSystem.src.views
 
         }
 
-        //Cell click點擊事件
+        //站碼DataGridView Cell click點擊事件
         private void GridViewStationCode_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0 || e.ColumnIndex < 0)
@@ -381,9 +440,25 @@ namespace CentralＭonitoringSystem.src.views
             int row = currentCell.RowIndex;//列
             int column = currentCell.ColumnIndex;//行
 
+            //set站碼UI
             SetSensorUI(row);
 
+            dBHelper.Open();
 
+            SqlDataReader reader = dBHelper.SelectFromSensingPointWithSensorID(row + 1);
+
+            //先清空model
+            if (signals.Count > 0) signals.Clear();
+
+            //將讀取回來的資料set進Model
+            SetSqlDataToModel(reader);
+
+            reader.Close();
+            dBHelper.Close();
+
+            //set信號UI，預設第一筆
+            if (signals.Count > 0)
+                SetSignalUI(signals[0]);
         }
 
         //圖形檔名點即秀出檔案夾，選擇圖片，資料夾位置在Bin->Debug->pictures

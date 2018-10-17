@@ -214,5 +214,47 @@
       <Name>GLButton</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\UI &amp; UX 設計概念圖.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\一樓防盜點.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\二樓防盜點.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\三樓防盜點.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\公共區域偵測器.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\庭園照明.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\綠警示燈.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\20181018_031320.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\20181018_032624.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\anti_theft_floor_1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\anti_theft_floor_2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\anti_theft_floor_3.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\garden_lamp.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\public_area_detector.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

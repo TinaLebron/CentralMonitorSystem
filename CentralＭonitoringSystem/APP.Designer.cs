@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("主畫面");
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("主畫面");
             this.panelLest = new System.Windows.Forms.Panel();
             this.lblTimeNow = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
@@ -43,27 +43,27 @@
             this.menuTreeView = new System.Windows.Forms.TreeView();
             this.topMenuToolStrip = new System.Windows.Forms.Panel();
             this.menubarPanel = new System.Windows.Forms.Panel();
+            this.threeBtnsHidePanel = new System.Windows.Forms.Panel();
+            this.btnBuildTable = new GLButton.MyButton();
+            this.btnRecord = new GLButton.MyButton();
+            this.labelCommunication = new System.Windows.Forms.Label();
+            this.labelBuildTable = new System.Windows.Forms.Label();
+            this.btnCommunication = new GLButton.MyButton();
+            this.labelRecord = new System.Windows.Forms.Label();
             this.labelOK = new System.Windows.Forms.Label();
             this.btnOK = new GLButton.MyButton();
-            this.labelBuildTable = new System.Windows.Forms.Label();
-            this.btnBuildTable = new GLButton.MyButton();
-            this.labelCommunication = new System.Windows.Forms.Label();
-            this.btnCommunication = new GLButton.MyButton();
             this.labelTitle = new System.Windows.Forms.Label();
-            this.labelRecord = new System.Windows.Forms.Label();
-            this.btnRecord = new GLButton.MyButton();
             this.buildingTablePanel = new System.Windows.Forms.Panel();
-            this.threeBtnsHidePanel = new System.Windows.Forms.Panel();
             this.panelLest.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.treeViewPanel.SuspendLayout();
             this.topMenuToolStrip.SuspendLayout();
             this.menubarPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btnOK)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnBuildTable)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnCommunication)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnRecord)).BeginInit();
             this.threeBtnsHidePanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnBuildTable)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnRecord)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnCommunication)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnOK)).BeginInit();
             this.SuspendLayout();
             // 
             // panelLest
@@ -113,6 +113,7 @@
             this.toolStrip.Size = new System.Drawing.Size(7126, 45);
             this.toolStrip.TabIndex = 10;
             this.toolStrip.Text = "toolStrip1";
+            this.toolStrip.Visible = false;
             // 
             // TSSBtnSelect
             // 
@@ -163,22 +164,22 @@
             // 
             // contentPanel
             // 
-            this.contentPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.contentPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.contentPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.contentPanel.Location = new System.Drawing.Point(621, 223);
+            this.contentPanel.Location = new System.Drawing.Point(587, 226);
             this.contentPanel.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.contentPanel.Name = "contentPanel";
-            this.contentPanel.Size = new System.Drawing.Size(2878, 1349);
+            this.contentPanel.Size = new System.Drawing.Size(2912, 1347);
             this.contentPanel.TabIndex = 16;
             // 
             // treeViewPanel
             // 
-            this.treeViewPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.treeViewPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             this.treeViewPanel.Controls.Add(this.menuTreeView);
-            this.treeViewPanel.Location = new System.Drawing.Point(3, 226);
+            this.treeViewPanel.Location = new System.Drawing.Point(-2, 225);
             this.treeViewPanel.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.treeViewPanel.Name = "treeViewPanel";
-            this.treeViewPanel.Size = new System.Drawing.Size(596, 1364);
+            this.treeViewPanel.Size = new System.Drawing.Size(595, 1365);
             this.treeViewPanel.TabIndex = 15;
             // 
             // menuTreeView
@@ -188,19 +189,19 @@
             this.menuTreeView.Font = new System.Drawing.Font("PMingLiU", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.menuTreeView.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.menuTreeView.LineColor = System.Drawing.Color.White;
-            this.menuTreeView.Location = new System.Drawing.Point(0, 32);
+            this.menuTreeView.Location = new System.Drawing.Point(0, 57);
             this.menuTreeView.Margin = new System.Windows.Forms.Padding(2);
             this.menuTreeView.Name = "menuTreeView";
-            treeNode2.Name = "Node0";
-            treeNode2.Text = "主畫面";
+            treeNode4.Name = "Node0";
+            treeNode4.Text = "主畫面";
             this.menuTreeView.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode2});
-            this.menuTreeView.Size = new System.Drawing.Size(598, 1332);
+            treeNode4});
+            this.menuTreeView.Size = new System.Drawing.Size(598, 1307);
             this.menuTreeView.TabIndex = 2;
             // 
             // topMenuToolStrip
             // 
-            this.topMenuToolStrip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.topMenuToolStrip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.topMenuToolStrip.Controls.Add(this.toolStrip);
             this.topMenuToolStrip.Location = new System.Drawing.Point(-2, 1);
             this.topMenuToolStrip.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
@@ -212,7 +213,7 @@
             // 
             this.menubarPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.menubarPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.menubarPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.menubarPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.menubarPanel.Controls.Add(this.threeBtnsHidePanel);
             this.menubarPanel.Controls.Add(this.labelOK);
@@ -223,6 +224,103 @@
             this.menubarPanel.Name = "menubarPanel";
             this.menubarPanel.Size = new System.Drawing.Size(3467, 164);
             this.menubarPanel.TabIndex = 13;
+            // 
+            // threeBtnsHidePanel
+            // 
+            this.threeBtnsHidePanel.Controls.Add(this.btnBuildTable);
+            this.threeBtnsHidePanel.Controls.Add(this.btnRecord);
+            this.threeBtnsHidePanel.Controls.Add(this.labelCommunication);
+            this.threeBtnsHidePanel.Controls.Add(this.labelBuildTable);
+            this.threeBtnsHidePanel.Controls.Add(this.btnCommunication);
+            this.threeBtnsHidePanel.Controls.Add(this.labelRecord);
+            this.threeBtnsHidePanel.Location = new System.Drawing.Point(17, 12);
+            this.threeBtnsHidePanel.Name = "threeBtnsHidePanel";
+            this.threeBtnsHidePanel.Size = new System.Drawing.Size(711, 146);
+            this.threeBtnsHidePanel.TabIndex = 20;
+            // 
+            // btnBuildTable
+            // 
+            this.btnBuildTable.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnBuildTable.Image = global::CentralＭonitoringSystem.Properties.Resources.建表1;
+            this.btnBuildTable.ImageHover = global::CentralＭonitoringSystem.Properties.Resources.建表2;
+            this.btnBuildTable.ImageNormal = global::CentralＭonitoringSystem.Properties.Resources.建表1;
+            this.btnBuildTable.Location = new System.Drawing.Point(508, 8);
+            this.btnBuildTable.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
+            this.btnBuildTable.Name = "btnBuildTable";
+            this.btnBuildTable.Size = new System.Drawing.Size(191, 100);
+            this.btnBuildTable.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnBuildTable.TabIndex = 16;
+            this.btnBuildTable.TabStop = false;
+            this.btnBuildTable.Click += new System.EventHandler(this.BtnBuildTable_Click);
+            // 
+            // btnRecord
+            // 
+            this.btnRecord.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnRecord.Image = global::CentralＭonitoringSystem.Properties.Resources.icons8_video_editing_80;
+            this.btnRecord.ImageHover = global::CentralＭonitoringSystem.Properties.Resources.icons8_video_editing_80__1_;
+            this.btnRecord.ImageNormal = global::CentralＭonitoringSystem.Properties.Resources.icons8_video_editing_80;
+            this.btnRecord.Location = new System.Drawing.Point(285, 8);
+            this.btnRecord.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
+            this.btnRecord.Name = "btnRecord";
+            this.btnRecord.Size = new System.Drawing.Size(191, 100);
+            this.btnRecord.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnRecord.TabIndex = 10;
+            this.btnRecord.TabStop = false;
+            this.btnRecord.Click += new System.EventHandler(this.BtnRecord_Click);
+            // 
+            // labelCommunication
+            // 
+            this.labelCommunication.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.labelCommunication.Font = new System.Drawing.Font("PMingLiU", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.labelCommunication.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            this.labelCommunication.Location = new System.Drawing.Point(112, 112);
+            this.labelCommunication.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelCommunication.Name = "labelCommunication";
+            this.labelCommunication.Size = new System.Drawing.Size(100, 36);
+            this.labelCommunication.TabIndex = 15;
+            this.labelCommunication.Text = "通訊";
+            this.labelCommunication.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // labelBuildTable
+            // 
+            this.labelBuildTable.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.labelBuildTable.Font = new System.Drawing.Font("PMingLiU", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.labelBuildTable.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            this.labelBuildTable.Location = new System.Drawing.Point(552, 108);
+            this.labelBuildTable.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelBuildTable.Name = "labelBuildTable";
+            this.labelBuildTable.Size = new System.Drawing.Size(100, 36);
+            this.labelBuildTable.TabIndex = 17;
+            this.labelBuildTable.Text = "建表";
+            this.labelBuildTable.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btnCommunication
+            // 
+            this.btnCommunication.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnCommunication.Image = global::CentralＭonitoringSystem.Properties.Resources.icons8_flow_chart_80;
+            this.btnCommunication.ImageHover = global::CentralＭonitoringSystem.Properties.Resources.icons8_flow_chart_80__1_;
+            this.btnCommunication.ImageNormal = global::CentralＭonitoringSystem.Properties.Resources.icons8_flow_chart_80;
+            this.btnCommunication.Location = new System.Drawing.Point(66, 10);
+            this.btnCommunication.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
+            this.btnCommunication.Name = "btnCommunication";
+            this.btnCommunication.Size = new System.Drawing.Size(191, 100);
+            this.btnCommunication.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnCommunication.TabIndex = 14;
+            this.btnCommunication.TabStop = false;
+            this.btnCommunication.Click += new System.EventHandler(this.BtnCommunication_Click);
+            // 
+            // labelRecord
+            // 
+            this.labelRecord.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.labelRecord.Font = new System.Drawing.Font("PMingLiU", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.labelRecord.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            this.labelRecord.Location = new System.Drawing.Point(328, 108);
+            this.labelRecord.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelRecord.Name = "labelRecord";
+            this.labelRecord.Size = new System.Drawing.Size(100, 36);
+            this.labelRecord.TabIndex = 11;
+            this.labelRecord.Text = "紀錄";
+            this.labelRecord.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // labelOK
             // 
@@ -252,62 +350,6 @@
             this.btnOK.TabStop = false;
             this.btnOK.Click += new System.EventHandler(this.BtnOK_Click);
             // 
-            // labelBuildTable
-            // 
-            this.labelBuildTable.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-            this.labelBuildTable.Font = new System.Drawing.Font("PMingLiU", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.labelBuildTable.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.labelBuildTable.Location = new System.Drawing.Point(552, 108);
-            this.labelBuildTable.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.labelBuildTable.Name = "labelBuildTable";
-            this.labelBuildTable.Size = new System.Drawing.Size(100, 36);
-            this.labelBuildTable.TabIndex = 17;
-            this.labelBuildTable.Text = "建表";
-            this.labelBuildTable.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // btnBuildTable
-            // 
-            this.btnBuildTable.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnBuildTable.Image = global::CentralＭonitoringSystem.Properties.Resources.建表1;
-            this.btnBuildTable.ImageHover = global::CentralＭonitoringSystem.Properties.Resources.建表2;
-            this.btnBuildTable.ImageNormal = global::CentralＭonitoringSystem.Properties.Resources.建表1;
-            this.btnBuildTable.Location = new System.Drawing.Point(508, 8);
-            this.btnBuildTable.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
-            this.btnBuildTable.Name = "btnBuildTable";
-            this.btnBuildTable.Size = new System.Drawing.Size(191, 100);
-            this.btnBuildTable.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.btnBuildTable.TabIndex = 16;
-            this.btnBuildTable.TabStop = false;
-            this.btnBuildTable.Click += new System.EventHandler(this.BtnBuildTable_Click);
-            // 
-            // labelCommunication
-            // 
-            this.labelCommunication.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-            this.labelCommunication.Font = new System.Drawing.Font("PMingLiU", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.labelCommunication.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.labelCommunication.Location = new System.Drawing.Point(112, 112);
-            this.labelCommunication.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.labelCommunication.Name = "labelCommunication";
-            this.labelCommunication.Size = new System.Drawing.Size(100, 36);
-            this.labelCommunication.TabIndex = 15;
-            this.labelCommunication.Text = "通訊";
-            this.labelCommunication.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // btnCommunication
-            // 
-            this.btnCommunication.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnCommunication.Image = global::CentralＭonitoringSystem.Properties.Resources.icons8_flow_chart_80;
-            this.btnCommunication.ImageHover = global::CentralＭonitoringSystem.Properties.Resources.icons8_flow_chart_80__1_;
-            this.btnCommunication.ImageNormal = global::CentralＭonitoringSystem.Properties.Resources.icons8_flow_chart_80;
-            this.btnCommunication.Location = new System.Drawing.Point(66, 10);
-            this.btnCommunication.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
-            this.btnCommunication.Name = "btnCommunication";
-            this.btnCommunication.Size = new System.Drawing.Size(191, 100);
-            this.btnCommunication.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.btnCommunication.TabIndex = 14;
-            this.btnCommunication.TabStop = false;
-            this.btnCommunication.Click += new System.EventHandler(this.BtnCommunication_Click);
-            // 
             // labelTitle
             // 
             this.labelTitle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -323,34 +365,6 @@
             this.labelTitle.Text = "中央監控系統";
             this.labelTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // labelRecord
-            // 
-            this.labelRecord.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-            this.labelRecord.Font = new System.Drawing.Font("PMingLiU", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.labelRecord.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.labelRecord.Location = new System.Drawing.Point(328, 108);
-            this.labelRecord.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.labelRecord.Name = "labelRecord";
-            this.labelRecord.Size = new System.Drawing.Size(100, 36);
-            this.labelRecord.TabIndex = 11;
-            this.labelRecord.Text = "紀錄";
-            this.labelRecord.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // btnRecord
-            // 
-            this.btnRecord.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnRecord.Image = global::CentralＭonitoringSystem.Properties.Resources.icons8_video_editing_80;
-            this.btnRecord.ImageHover = global::CentralＭonitoringSystem.Properties.Resources.icons8_video_editing_80__1_;
-            this.btnRecord.ImageNormal = global::CentralＭonitoringSystem.Properties.Resources.icons8_video_editing_80;
-            this.btnRecord.Location = new System.Drawing.Point(285, 8);
-            this.btnRecord.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
-            this.btnRecord.Name = "btnRecord";
-            this.btnRecord.Size = new System.Drawing.Size(191, 100);
-            this.btnRecord.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.btnRecord.TabIndex = 10;
-            this.btnRecord.TabStop = false;
-            this.btnRecord.Click += new System.EventHandler(this.BtnRecord_Click);
-            // 
             // buildingTablePanel
             // 
             this.buildingTablePanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
@@ -359,33 +373,20 @@
             this.buildingTablePanel.Size = new System.Drawing.Size(3086, 1347);
             this.buildingTablePanel.TabIndex = 17;
             // 
-            // threeBtnsHidePanel
-            // 
-            this.threeBtnsHidePanel.Controls.Add(this.btnBuildTable);
-            this.threeBtnsHidePanel.Controls.Add(this.btnRecord);
-            this.threeBtnsHidePanel.Controls.Add(this.labelCommunication);
-            this.threeBtnsHidePanel.Controls.Add(this.labelBuildTable);
-            this.threeBtnsHidePanel.Controls.Add(this.btnCommunication);
-            this.threeBtnsHidePanel.Controls.Add(this.labelRecord);
-            this.threeBtnsHidePanel.Location = new System.Drawing.Point(17, 12);
-            this.threeBtnsHidePanel.Name = "threeBtnsHidePanel";
-            this.threeBtnsHidePanel.Size = new System.Drawing.Size(711, 146);
-            this.threeBtnsHidePanel.TabIndex = 20;
-            // 
-            // APP
+            // App
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
             this.ClientSize = new System.Drawing.Size(2884, 1722);
-            this.Controls.Add(this.treeViewPanel);
+            this.Controls.Add(this.menubarPanel);
             this.Controls.Add(this.panelLest);
+            this.Controls.Add(this.treeViewPanel);
             this.Controls.Add(this.contentPanel);
             this.Controls.Add(this.topMenuToolStrip);
-            this.Controls.Add(this.menubarPanel);
             this.Controls.Add(this.buildingTablePanel);
             this.Margin = new System.Windows.Forms.Padding(2);
-            this.Name = "APP";
+            this.Name = "App";
             this.Text = "中央監控系統";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -395,11 +396,11 @@
             this.treeViewPanel.ResumeLayout(false);
             this.topMenuToolStrip.ResumeLayout(false);
             this.menubarPanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.btnOK)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnBuildTable)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnCommunication)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnRecord)).EndInit();
             this.threeBtnsHidePanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.btnBuildTable)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnRecord)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnCommunication)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnOK)).EndInit();
             this.ResumeLayout(false);
 
         }

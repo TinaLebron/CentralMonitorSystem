@@ -16,5 +16,9 @@ namespace CentralＭonitoringSystem.src.views.home
         {
             InitializeComponent();
         }
+        public void SetImage(Image img)
+        {
+            this.pictureBox1.Image = img;
+        }
     }
 }
