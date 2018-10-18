@@ -40,7 +40,6 @@ namespace CentralＭonitoringSystem.src.Database
         //儲存建表資料
         public void SaveBuildingTable()
         {
-
             //SqlConnection con = new SqlConnection(scsb.ToString());
             //con.Open();
             //string strSQL = "update SensingPoint set SignalType=@Signaltype,AlarmOutput=@Alarmoutput,SignalPreset=@SignalPreset,GroupNumber=@GroupNumber,SignalDescription=@Signaldescription,SignalDisplayTextNormally=@SignalDisplayTextNormally,SignalAnomalyDisplayText=@SignalAnomalyDisplayText,NormalSignalFileName=@NormalSignalFileName,SignalAnomalyFileName=@SignalAnomalyFileName,GraphicXCoordinate=@GraphicXCoordinate,GraphicYCoordinate=@GraphicYCoordinate,TitleContent=@TitleContent where SensingPoint=@SensingPoint and SensorID=@SensorID";
@@ -61,6 +60,7 @@ namespace CentralＭonitoringSystem.src.Database
             //int rows = cmd.ExecuteNonQuery();
             //con.Close();
             //MessageBox.Show("修改完成");
+
 
         }
 

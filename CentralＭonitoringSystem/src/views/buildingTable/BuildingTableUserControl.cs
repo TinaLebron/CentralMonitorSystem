@@ -469,7 +469,7 @@ namespace CentralＭonitoringSystem.src.views
             {
                 StreamReader reader = new StreamReader(openFileDialog.FileName);
                 localFilePath = openFileDialog.FileName.ToString();
-                saveFilePath = csharppath + @"\pictures\" + Path.GetFileName(openFileDialog.FileName);
+                saveFilePath = csharppath + @"\pictures\" + Path.GetFileName(openFileDialog.FileName);//csharppath執行檔案路徑
                 File.Copy(localFilePath, saveFilePath, true);
                 textBox.Text = Path.GetFileName(openFileDialog.FileName);
             }
