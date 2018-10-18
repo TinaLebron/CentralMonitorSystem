@@ -209,12 +209,6 @@
     <None Include="Resources\確定2.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GLButton\GLButton.csproj">
-      <Project>{0958d155-f06c-48d1-bfaa-347002cf73ff}</Project>
-      <Name>GLButton</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\UI &amp; UX 設計概念圖.png" />
   </ItemGroup>
   <ItemGroup>
@@ -255,6 +249,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\public_area_detector.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GLButton\GLButton.csproj">
+      <Project>{0958d155-f06c-48d1-bfaa-347002cf73ff}</Project>
+      <Name>GLButton</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MenuBar\MenuBar.csproj">
+      <Project>{5FE458BF-6615-4912-901F-5C013FB46AE0}</Project>
+      <Name>MenuBar</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

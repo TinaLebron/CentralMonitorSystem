@@ -172,6 +172,9 @@ namespace CentralＭonitoringSystem
                     case 3:
                         image = global::CentralＭonitoringSystem.Properties.Resources.監控系統圖片3;
                         break;
+                    case 4:
+                        image = global::CentralＭonitoringSystem.Properties.Resources.監控系統圖片3;
+                        break;
                 }
             }
             homeUserControl.SetImage(image);

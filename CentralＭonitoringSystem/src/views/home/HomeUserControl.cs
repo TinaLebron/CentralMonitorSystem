@@ -18,7 +18,7 @@ namespace CentralＭonitoringSystem.src.views.home
         }
         public void SetImage(Image img)
         {
-            this.pictureBox1.Image = img;
+            this.panel1.BackgroundImage = img;
         }
     }
 }
